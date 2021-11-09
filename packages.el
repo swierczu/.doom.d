@@ -60,3 +60,6 @@
 (package! quelpa)
 (package! quelpa-use-package)
 (package! pocket-reader)
+(package! gnugo)
+(package! powerline)
+(package! dired-narrow)

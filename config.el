@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Iosevka Term" :size 13)
-      doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 13))
+(setq doom-font (font-spec :family "Iosevka Term SS04" :size 13 :weight 'light)
+      doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 13 :weight 'light))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -44,8 +44,7 @@
         modus-themes-mixed-fonts t
         modus-themes-fringes '(intense)
         modus-themes-intense-markup t
-        modus-themes-org-blocks '(tinted-background)
-        )
+        modus-themes-org-blocks '(tinted-background))
   ;; Load the theme files before enabling a theme (else you get an error).
   (modus-themes-load-themes)
   :config
@@ -54,15 +53,14 @@
   :config
   ;; Load the theme of your choice:
   (modus-themes-load-vivendi)
-  :bind ("<f5>" . modus-themes-toggle)
-  )
+  :bind ("<f5>" . modus-themes-toggle))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
 (global-visual-line-mode t)
-(setq default-directory "~")
-(setq browse-url-browser-function 'eww-browse-url)
+(setq display-line-numbers-type t
+      default-directory "~"
+      browse-url-browser-function 'eww-browse-url)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -85,20 +83,25 @@
 (when noninteractive
   (add-to-list 'doom-env-whitelist "^SSH_"))
 
-
 ;; -------------------------------
 ;; Dired
 ;; -------------------------------
 (after! dired
-  (remove-hook 'dired-mode-hook 'dired-omit-mode) ; Ensure dired-omit-mode is not started with dired. It hides some files transparently.
-  )
+  (remove-hook 'dired-mode-hook 'dired-omit-mode)) ; Ensure dired-omit-mode is not started with dired. It hides some files transparently.
 
 ;; -------------------------------
 ;; Spelling
 ;; -------------------------------
 (after! ispell
-  (setq ispell-dictionary "en_US")
-  )
+  (setenv "LANG" "en_US.UTF-8")
+  (setq ispell-program-name "hunspell"
+        ispell-dictionary "en_US,pl_PL"
+        ispell-personal-dictionary "~/.doom.d/hunspell_personal")
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "en_US,pl_PL"))
+
+(after! flyspell
+  (setq flyspell-lazy-idle-seconds 2))
 
 ;; -------------------------------
 ;; web mode
@@ -111,9 +114,7 @@
         typescript-indent-level 2
         json-reformat:indent-width 2
         css-indent-offset 2
-        prettier-js-args '("--single-quote")
-        )
-  )
+        prettier-js-args '("--single-quote")))
 
 ;; -------------------------------
 ;; org-mode
@@ -137,8 +138,7 @@
 (defun transform-square-brackets-to-round-ones(string-to-transform)
   "Transforms [ into ( and ] into ), other chars left unchanged."
   (concat
-   (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform))
-  )
+   (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform)))
 
 (after! org-capture
   (setq org-capture-templates nil)
@@ -148,22 +148,17 @@
                  "* %(transform-square-brackets-to-round-ones \"%:description\") %?\n:PROPERTIES:\n:Link: %:link\n:When: %U\n:END:\n#+BEGIN_QUOTE\n%i\n#+END_QUOTE"
                  :prepend t
                  :empty-lines 1
-                 :kill-buffer t)
-               )
+                 :kill-buffer t))
   (add-to-list 'org-capture-templates
                '("L" "Protocol Link" entry
                  (file+datetree "web_notes.org")
                  "* %(transform-square-brackets-to-round-ones \"%:description\") %?\n:PROPERTIES:\n:Link: %:link\n:When: %U\n:END:\n"
                  :prepend t
                  :empty-lines 1
-                 :kill-buffer t)
-               )
-  )
+                 :kill-buffer t)))
 
 (after! org
   (setq org-log-done t
         org-log-into-drawer t
         org-journal-enable-agenda-integration t
-        org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")
-        )
-  )
+        org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
