@@ -63,3 +63,5 @@
 (package! gnugo)
 (package! powerline)
 (package! dired-narrow)
+(package! marginalia)
+(package! embark)

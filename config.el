@@ -116,6 +116,44 @@
         css-indent-offset 2
         prettier-js-args '("--single-quote")))
 
+
+;; -------------------------------
+;; embark
+;; -------------------------------
+
+(use-package! marginalia
+  :ensure t
+  :config
+  (marginalia-mode))
+
+(use-package! embark
+  :ensure t
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+  :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+;; -------------------------------
+;; pdf-tools
+;; -------------------------------
+
+(use-package! pdf-tools
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-width)
+  :custom
+  (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
+
+
 ;; -------------------------------
 ;; org-mode
 ;; -------------------------------
@@ -162,3 +200,20 @@
         org-log-into-drawer t
         org-journal-enable-agenda-integration t
         org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
+
+(after! org-noter
+  (setq org-noter-notes-search-path org-directory
+        org-noter-hide-other nil
+        org-noter-separate-notes-from-heading t
+        org-noter-always-create-frame nil)
+  (map!
+   :map org-noter-doc-mode-map
+   :leader
+   (:prefix-map ("n p" . "org-noter")
+    :desc "Start session" "e" #'org-noter)
+    :desc "Insert note" "i" #'org-noter-insert-note
+    :desc "Insert precise note"  "p" #'org-noter-insert-precise-note
+    :desc "Go to previous note" "k" #'org-noter-sync-prev-note
+    :desc "Go to next note" "j" #'org-noter-sync-next-note
+    :desc "Create skeleton" "s" #'org-noter-create-skeleton
+    :desc "Kill session" "q" #'org-noter-kill-session))

@@ -20,7 +20,7 @@
 (doom! :input
        ;;chinese
        ;;japanese
-       layout            ; auie,ctsrnm is the superior home row
+       ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
        (company
@@ -28,11 +28,11 @@
         +childframe)           ; the ultimate code completion backend
        ;;(helm +fuzzy +icons)              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy
-        +fuzzy
-        +prescient
-        ;;+childframe
-        +icons)
+       ;; (ivy
+       ;;  +fuzzy
+       ;;  +prescient
+       ;;  +icons)
+       vertico           ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
@@ -97,6 +97,7 @@
 
        :tools
        ansible
+       biblio
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        (docker +lsp)
@@ -106,6 +107,8 @@
        gist              ; interacting with github gists
        (lookup              ; navigate your code and its documentation
         +devdocs         ; ...on devdocs.io online
+        +dictionary
+        +offline
         +docsets)        ; ...or in Dash docsets locally
        lsp
        magit             ; a git porcelain for Emacs
@@ -118,7 +121,6 @@
        ;;terraform         ; infrastructure as code
        tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
-       biblio
 
        :os
        (:if IS-MAC macos)  ; improve compatibility with macOS
