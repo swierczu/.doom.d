@@ -89,6 +89,11 @@
 (after! dired
   (remove-hook 'dired-mode-hook 'dired-omit-mode)) ; Ensure dired-omit-mode is not started with dired. It hides some files transparently.
 
+(use-package dired-subtree
+  :after dired
+  :bind (:map dired-mode-map
+              ("TAB" . dired-subtree-toggle)))
+
 ;; -------------------------------
 ;; Spelling
 ;; -------------------------------

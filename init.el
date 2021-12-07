@@ -32,7 +32,7 @@
        ;;  +fuzzy
        ;;  +prescient
        ;;  +icons)
-       vertico           ; the search engine of the future
+       (vertico +icons)          ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
