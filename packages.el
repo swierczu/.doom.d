@@ -66,3 +66,5 @@
 (package! dired-subtree)
 (package! marginalia)
 (package! embark)
+(package!  command-log-mode
+  :recipe (:host github :repo "lewang/command-log-mode"))
