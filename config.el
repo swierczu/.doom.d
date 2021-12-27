@@ -30,7 +30,6 @@
 ;;(setq doom-theme 'modus-vivendi)
 
 (use-package! modus-themes
-  :ensure                         ; omit this to use the built-in themes
   :init
   ;; Add all your customizations prior to loading the themes
   (setq modus-themes-hl-line '(intense)
@@ -127,12 +126,10 @@
 ;; -------------------------------
 
 (use-package! marginalia
-  :ensure t
   :config
   (marginalia-mode))
 
 (use-package! embark
-  :ensure t
   :bind
   (("C-." . embark-act)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
@@ -227,7 +224,6 @@
 ;; Google Translate
 ;; -------------------------------
 (use-package google-translate
-  :ensure t
   :custom
   (google-translate-backend-method 'curl)
   :config
