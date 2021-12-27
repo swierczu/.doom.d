@@ -49,8 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! monokai-theme)
-(package! gruvbox-theme)
 (package! modus-themes)
 (package! vue-mode)
 (package! org-super-agenda)
@@ -68,3 +66,6 @@
 (package! embark)
 (package!  command-log-mode
   :recipe (:host github :repo "lewang/command-log-mode"))
+(package! google-translate)
+(package! kubernetes)
+(package! kubernetes-evil)
