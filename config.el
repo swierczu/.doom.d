@@ -49,10 +49,22 @@
   :config
   ;; Load the theme of your choice:
   (modus-themes-load-vivendi)
-  :config
-  ;; Load the theme of your choice:
-  (modus-themes-load-vivendi)
   :bind ("<f5>" . modus-themes-toggle))
+
+(use-package! bespoke-themes
+  :config
+  ;; Set evil cursor colors
+  (setq bespoke-set-evil-cursors t)
+  ;; Set use of italics
+  (setq bespoke-set-italic-comments t
+        bespoke-set-italic-keywords t)
+  ;; Set variable pitch
+  (setq bespoke-set-variable-pitch t)
+  ;; Set initial theme variant
+  (setq bespoke-set-theme 'dark)
+  ;; Load theme
+  ;;(load-theme 'bespoke t)
+  )
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -125,24 +137,7 @@
 ;; embark
 ;; -------------------------------
 
-(use-package! marginalia
-  :config
-  (marginalia-mode))
-
-(use-package! embark
-  :bind
-  (("C-." . embark-act)         ;; pick some comfortable binding
-   ("C-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-  :init
-  ;; Optionally replace the key help with a completing-read interface
-  (setq prefix-help-command #'embark-prefix-help-command)
-  :config
-  ;; Hide the mode line of the Embark live/completions buffers
-  (add-to-list 'display-buffer-alist
-               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                 nil
-                 (window-parameters (mode-line-format . none)))))
+; TODO
 
 ;; -------------------------------
 ;; pdf-tools
