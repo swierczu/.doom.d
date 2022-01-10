@@ -67,3 +67,5 @@
 (package! kubernetes-evil)
 (package! bespoke-themes
   :recipe (:host github :repo "mclear-tools/bespoke-themes"))
+(package! nano-theme
+  :recipe (:host github :repo "rougier/nano-theme"))

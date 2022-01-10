@@ -25,9 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;;(setq doom-theme 'doom-vibrant)
-;;(setq doom-theme 'doom-monokai-classic)
-;;(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'doom-dracula)
 
 (use-package! modus-themes
   :init
@@ -48,7 +46,7 @@
   (modus-themes-load-themes)
   :config
   ;; Load the theme of your choice:
-  (modus-themes-load-vivendi)
+  ;;(modus-themes-load-vivendi)
   :bind ("<f5>" . modus-themes-toggle))
 
 (use-package! bespoke-themes
