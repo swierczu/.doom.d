@@ -25,6 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+(setq fancy-splash-image (concat doom-private-dir "themes/nebula.png"))
 (setq doom-theme 'doom-dracula)
 
 (use-package! modus-themes
@@ -48,21 +49,6 @@
   ;; Load the theme of your choice:
   ;;(modus-themes-load-vivendi)
   :bind ("<f5>" . modus-themes-toggle))
-
-(use-package! bespoke-themes
-  :config
-  ;; Set evil cursor colors
-  (setq bespoke-set-evil-cursors t)
-  ;; Set use of italics
-  (setq bespoke-set-italic-comments t
-        bespoke-set-italic-keywords t)
-  ;; Set variable pitch
-  (setq bespoke-set-variable-pitch t)
-  ;; Set initial theme variant
-  (setq bespoke-set-theme 'dark)
-  ;; Load theme
-  ;;(load-theme 'bespoke t)
-  )
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -93,12 +79,43 @@
   (add-to-list 'doom-env-whitelist "^SSH_"))
 
 ;; -------------------------------
+;; Evil
+;; -------------------------------
+(use-package! evil-owl
+  :config
+  (setq evil-owl-max-string-length 500)
+  (add-to-list 'display-buffer-alist
+               '("*evil-owl*"
+                 (display-buffer-in-side-window)
+                 (side . bottom)
+                 (window-height . 0.3)))
+  (evil-owl-mode))
+
+;; -------------------------------
 ;; Dired
 ;; -------------------------------
-(after! dired
-  (remove-hook 'dired-mode-hook 'dired-omit-mode)) ; Ensure dired-omit-mode is not started with dired. It hides some files transparently.
 
-(use-package dired-subtree
+(defun xah-dired-sort ()
+  ;Sort dired dir listing in different ways.
+  ;URL `http://ergoemacs.org/emacs/dired_sort.html'
+  (interactive)
+  (let (-sort-by -arg)
+    (setq -sort-by (ido-completing-read "Sort by:" '( "date" "size" "name" "extension" "dir")))
+    (cond
+     ((equal -sort-by "name") (setq -arg "-Al --si --time-style long-iso "))
+     ((equal -sort-by "date") (setq -arg "-Al --si --time-style long-iso -t"))
+     ((equal -sort-by "size") (setq -arg "-Al --si --time-style long-iso -S"))
+     ((equal -sort-by "extension") (setq -arg "-Al --si --time-style long-iso -X"))
+     ((equal -sort-by "dir") (setq -arg "-Al --si --time-style long-iso --group-directories-first"))
+     (t (error "logic error 09535" )))
+    (dired-sort-other -arg )))
+
+(after! dired
+  ;Ensure dired-omit-mode is not started with dired. It hides some files transparently:
+  (remove-hook 'dired-mode-hook 'dired-omit-mode)
+  (setq dired-listing-switches "-Al --si --time-style long-iso -t"))
+
+(use-package! dired-subtree
   :after dired
   :bind (:map dired-mode-map
               ("TAB" . dired-subtree-toggle)))
@@ -194,6 +211,7 @@
   (setq org-log-done t
         org-log-into-drawer t
         org-journal-enable-agenda-integration t
+        org-tags-column -80
         org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
 
 (after! org-noter

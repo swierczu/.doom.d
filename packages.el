@@ -60,12 +60,16 @@
 (package! powerline)
 (package! dired-narrow)
 (package! dired-subtree)
-(package!  command-log-mode
+(package! command-log-mode
   :recipe (:host github :repo "lewang/command-log-mode"))
 (package! google-translate)
 (package! kubernetes)
 (package! kubernetes-evil)
-(package! bespoke-themes
-  :recipe (:host github :repo "mclear-tools/bespoke-themes"))
 (package! nano-theme
   :recipe (:host github :repo "rougier/nano-theme"))
+(package! dirvish)
+(package! openapi-yaml-mode
+  :recipe (:host github :repo "magoyette/openapi-yaml-mode"))
+(package! jq-mode
+  :recipe (:host github :repo "ljos/jq-mode"))
+(package! evil-owl)
