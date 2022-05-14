@@ -88,7 +88,7 @@
                '("*evil-owl*"
                  (display-buffer-in-side-window)
                  (side . bottom)
-                 (window-height . 0.3)))
+                 (window-height . 0.5)))
   (evil-owl-mode))
 
 ;; -------------------------------
