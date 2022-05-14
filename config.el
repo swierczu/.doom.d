@@ -1,32 +1,32 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+;; -------------------------------
+;; Globals & defaults
+;; -------------------------------
 
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
 (setq user-full-name "Bartłomiej Świercz"
       user-mail-address "bartek@rndity.com")
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Iosevka Term SS04" :size 13 :weight 'light)
-      doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 13 :weight 'light))
+(setq doom-font (font-spec :family "Iosevka Term SS04" :size 14 :weight 'light)
+      doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 14 :weight 'light))
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
 (setq fancy-splash-image (concat doom-private-dir "themes/nebula.png"))
 (setq doom-theme 'doom-dracula)
+
+(global-visual-line-mode t)
+(setq display-line-numbers-type t
+      default-directory "~"
+      browse-url-browser-function 'eww-browse-url)
+
+
+;; By default doom blacklists SSH_AUTH_SOCK and SSH_AUTH_PID variables, which means ssh agents don’t work.
+(when noninteractive
+  (add-to-list 'doom-env-whitelist "^SSH_"))
+
+
+;; -------------------------------
+;; Themes
+;; -------------------------------
 
 (use-package! modus-themes
   :init
@@ -50,34 +50,6 @@
   ;;(modus-themes-load-vivendi)
   :bind ("<f5>" . modus-themes-toggle))
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(global-visual-line-mode t)
-(setq display-line-numbers-type t
-      default-directory "~"
-      browse-url-browser-function 'eww-browse-url)
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-
-;; By default doom blacklists SSH_AUTH_SOCK and SSH_AUTH_PID variables, which means ssh agents don’t work.
-(when noninteractive
-  (add-to-list 'doom-env-whitelist "^SSH_"))
-
 ;; -------------------------------
 ;; Evil
 ;; -------------------------------
@@ -96,8 +68,8 @@
 ;; -------------------------------
 
 (defun xah-dired-sort ()
-  ;Sort dired dir listing in different ways.
-  ;URL `http://ergoemacs.org/emacs/dired_sort.html'
+  ;; Sort dired dir listing in different ways.
+  ;; URL `http://ergoemacs.org/emacs/dired_sort.html'
   (interactive)
   (let (-sort-by -arg)
     (setq -sort-by (ido-completing-read "Sort by:" '( "date" "size" "name" "extension" "dir")))
@@ -111,14 +83,14 @@
     (dired-sort-other -arg )))
 
 (after! dired
-  ;Ensure dired-omit-mode is not started with dired. It hides some files transparently:
+  ;; Ensure dired-omit-mode is not started with dired. It hides some files transparently:
   (remove-hook 'dired-mode-hook 'dired-omit-mode)
   (setq dired-listing-switches "-Al --si --time-style long-iso -t"))
 
 (use-package! dired-subtree
   :after dired
   :bind (:map dired-mode-map
-              ("TAB" . dired-subtree-toggle)))
+         ("TAB" . dired-subtree-toggle)))
 
 ;; -------------------------------
 ;; Spelling
@@ -152,7 +124,7 @@
 ;; embark
 ;; -------------------------------
 
-; TODO
+;; TODO
 
 ;; -------------------------------
 ;; pdf-tools
@@ -224,17 +196,17 @@
    :leader
    (:prefix-map ("n p" . "org-noter")
     :desc "Start session" "e" #'org-noter)
-    :desc "Insert note" "i" #'org-noter-insert-note
-    :desc "Insert precise note"  "p" #'org-noter-insert-precise-note
-    :desc "Go to previous note" "k" #'org-noter-sync-prev-note
-    :desc "Go to next note" "j" #'org-noter-sync-next-note
-    :desc "Create skeleton" "s" #'org-noter-create-skeleton
-    :desc "Kill session" "q" #'org-noter-kill-session))
+   :desc "Insert note" "i" #'org-noter-insert-note
+   :desc "Insert precise note"  "p" #'org-noter-insert-precise-note
+   :desc "Go to previous note" "k" #'org-noter-sync-prev-note
+   :desc "Go to next note" "j" #'org-noter-sync-next-note
+   :desc "Create skeleton" "s" #'org-noter-create-skeleton
+   :desc "Kill session" "q" #'org-noter-kill-session))
 
 ;; -------------------------------
 ;; Google Translate
 ;; -------------------------------
-(use-package google-translate
+(use-package! google-translate
   :custom
   (google-translate-backend-method 'curl)
   :config

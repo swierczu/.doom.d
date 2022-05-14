@@ -1,21 +1,7 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-;; This file controls what Doom modules are enabled and what order they load
-;; in. Remember to run 'doom sync' after modifying it!
-
-;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
-;;      documentation. There you'll find a "Module Index" link where you'll find
-;;      a comprehensive list of Doom's modules and what flags they support.
-
-;; NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
-;;      'C-c c k' for non-vim users) to view its documentation. This works on
-;;      flags as well (those symbols that start with a plus).
-;;
-;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
-;;      directory (for easy access to its source code).
-
-;; Install Emacs
-;; brew install emacs-plus@28 --with-no-titlebar --with-native-comp
+;; Install Emacs:
+;; brew install emacs-plus@28 --with-native-comp --with-imagemagick --with-mailutils --with-no-titlebar --with-modern-papirus-icon
 
 (doom! :input
        ;;chinese
@@ -92,7 +78,7 @@
        (spell            ; tasing you for misspelling misspelling
         +flyspell
         +hunspell)
-        ;+everywhere)
+                                        ;+everywhere)
        grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -169,7 +155,7 @@
         +capture
         +export
         +present
-       ;; +roam
+        ;; +roam
         +pretty
         +noter
         +journal
@@ -212,9 +198,3 @@
        :config
        ;;literate
        (default +bindings +smartparens +evil-commands))
-
-;; By default doom blacklists SSH_AUTH_SOCK and SSH_AUTH_PID variables, 
-;; which means ssh agents don’t work. This whitelists them: 
-(when noninteractive
-  (add-to-list 'doom-env-whitelist "^SSH_"))
-
