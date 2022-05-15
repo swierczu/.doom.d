@@ -10,7 +10,9 @@
 (setq doom-font (font-spec :family "Iosevka Term SS04" :size 14 :weight 'light)
       doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 14 :weight 'light))
 
-(setq fancy-splash-image (concat doom-private-dir "themes/nebula.png"))
+;;(setq fancy-splash-image (concat doom-private-dir "themes/nebula.png"))
+(setq fancy-splash-image (concat doom-private-dir "themes/M-x_butterfly.png"))
+;;(setq fancy-splash-image (concat doom-private-dir "themes/doom-emacs-color.png"))
 (setq doom-theme 'doom-dracula)
 
 (global-visual-line-mode t)
@@ -61,6 +63,7 @@
                  (display-buffer-in-side-window)
                  (side . bottom)
                  (window-height . 0.5)))
+  (set-popup-rule! "^\\*evil-owl\\*" :size 0.5)
   (evil-owl-mode))
 
 ;; -------------------------------
