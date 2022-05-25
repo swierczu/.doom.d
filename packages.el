@@ -25,3 +25,7 @@
 (package! jq-mode
   :recipe (:host github :repo "ljos/jq-mode"))
 (package! evil-owl)
+;; Disable json-mode and use jsonian instead:
+(package! json-mode :disable t)
+(package! jsonian
+  :recipe (:host github :repo "iwahbe/jsonian"))
