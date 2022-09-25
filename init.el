@@ -12,6 +12,7 @@
 (after! straight
   (add-to-list 'straight-recipes-gnu-elpa-ignored-packages 'seq))
 
+
 (doom! :input
        ;;chinese
        ;;japanese
@@ -91,6 +92,7 @@
        grammar           ; tasing grammar mistake every you make
 
        :tools
+       tree-sitter
        ansible
        biblio
        ;;debugger          ; FIXME stepping through code, to help you add bugs
@@ -149,7 +151,7 @@
        (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;(julia +lsp)            ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
-       (latex +fold +lsp)             ; writing papers in Emacs has never been so fun
+       (latex +fold)             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
@@ -193,7 +195,7 @@
        (yaml)              ; JSON, but readable
 
        :email
-       ;;(mu4e +gmail)
+       (mu4e +gmail +org)
        ;;notmuch
        ;;(wanderlust +gmail)
 

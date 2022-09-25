@@ -29,3 +29,5 @@
 (package! json-mode :disable t)
 (package! jsonian
   :recipe (:host github :repo "iwahbe/jsonian"))
+(package! ct
+  :recipe (:host github :repo "neeasade/ct.el"))
