@@ -92,7 +92,7 @@
        grammar           ; tasing grammar mistake every you make
 
        :tools
-       tree-sitter
+       ;;tree-sitter
        ansible
        biblio
        ;;debugger          ; FIXME stepping through code, to help you add bugs
@@ -166,10 +166,9 @@
         +capture
         +export
         +present
-        ;; +roam
+        +roam2
         +pretty
         +noter
-        +journal
         +dragndrop
         +gnuplot
         +pandoc)
@@ -188,7 +187,7 @@
        ;;scheme            ; a fully conniving family of lisps
        (sh)                ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
-       ;;solidity          ; do you need a blockchain? No.
+       solidity          ; do you need a blockchain? No.
        ;;(swift +lsp)             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        (web +lsp)               ; the tubes

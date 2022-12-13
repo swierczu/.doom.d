@@ -4,7 +4,6 @@
 (package! modus-themes)
 (package! vue-mode)
 (package! org-super-agenda)
-(package! org-brain)
 (package! prettier-js)
 (package! git-commit)
 (package! pocket-reader)
@@ -19,7 +18,6 @@
 (package! kubernetes-evil)
 (package! nano-theme
   :recipe (:host github :repo "rougier/nano-theme"))
-(package! dirvish)
 (package! openapi-yaml-mode
   :recipe (:host github :repo "magoyette/openapi-yaml-mode"))
 (package! jq-mode
@@ -31,3 +29,10 @@
   :recipe (:host github :repo "iwahbe/jsonian"))
 (package! ct
   :recipe (:host github :repo "neeasade/ct.el"))
+(package! languagetool
+  :recipe (:host github :repo "PillFall/languagetool.el"))
+(package! emacs-powerthesaurus
+  :recipe (:host github :repo "SavchenkoValeriy/emacs-powerthesaurus"))
+(package! eshell-vterm ;:disable t
+  :recipe (:host github :repo "iostapyshyn/eshell-vterm"))
+(package! peep-dired)
