@@ -86,8 +86,8 @@
          (file-relative-name (org-roam-node-file node) org-roam-directory))))
     (error "")))
   (setq org-roam-node-display-template
-        (format "${doom-hierarchy:*} %s %s"
-                (propertize "${type:12}" 'face 'font-lock-keyword-face)
+        (format "%s ${doom-hierarchy:*} %s"
+                (propertize "${type:10}" 'face 'font-lock-keyword-face)
                 (propertize "${doom-tags:42}" 'face 'org-tag)))
   (setq org-roam-mode-sections
         (list #'org-roam-backlinks-section
