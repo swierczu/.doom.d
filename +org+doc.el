@@ -99,7 +99,7 @@
   :config
   (setq org-roam-dailies-capture-templates nil)
   (add-to-list 'org-roam-dailies-capture-templates
-               '("d" "Daily schedule" entry "* TODO %?\nSCHEDULED: %t"
+               '("d" "📋 Daily schedule" entry "* TODO %?\nSCHEDULED: %t"
                  :target
                  (file+head+olp "%<%Y-%m-%d>.org"
                                 "#+title: %<%Y-%m-%d>\n"
@@ -107,7 +107,7 @@
                :unnarrowed t
                :empty-lines 1))
   (add-to-list 'org-roam-dailies-capture-templates
-               '("n" "Notes" entry "* %<%H:%M> %?"
+               '("n" "📝 Notes" entry "* %<%H:%M> %?"
                  :target
                  (file+head+olp "%<%Y-%m-%d>.org"
                                 "#+title: %<%Y-%m-%d>\n"
