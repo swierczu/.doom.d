@@ -16,3 +16,10 @@
                  (window-height . 0.5)))
   (set-popup-rule! "^\\*evil-owl\\*" :size 0.5)
   (evil-owl-mode))
+
+(use-package evil-goggles
+  :defer t
+  :after evil
+  :config
+  (evil-goggles-mode)
+  (evil-goggles-use-diff-faces))
