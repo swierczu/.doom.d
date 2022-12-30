@@ -164,6 +164,7 @@
         +attach
         +babel
         +capture
+        +journal
         +export
         +present
         +roam2

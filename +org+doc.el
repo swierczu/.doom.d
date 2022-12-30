@@ -94,6 +94,26 @@
               #'org-roam-reflinks-section
               #'org-roam-unlinked-references-section)))
 
+(use-package! org-roam-dailies
+  :after org-roam
+  :config
+  (setq org-roam-dailies-capture-templates nil)
+  (add-to-list 'org-roam-dailies-capture-templates
+               '("d" "Daily schedule" entry "* TODO %?\nSCHEDULED: %t"
+                 :target
+                 (file+head+olp "%<%Y-%m-%d>.org"
+                                "#+title: %<%Y-%m-%d>\n"
+                                ("Daily schedule"))
+               :unnarrowed t
+               :empty-lines 1))
+  (add-to-list 'org-roam-dailies-capture-templates
+               '("n" "Notes" entry "* %<%H:%M> %?"
+                 :target
+                 (file+head+olp "%<%Y-%m-%d>.org"
+                                "#+title: %<%Y-%m-%d>\n"
+                                ("Notes"))
+               :unnarrowed t
+               :empty-lines 1)))
 
 (defun +bs/hostname(url)
   (url-host (url-generic-parse-url url)))
