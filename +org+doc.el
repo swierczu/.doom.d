@@ -94,6 +94,94 @@
               #'org-roam-reflinks-section
               #'org-roam-unlinked-references-section)))
 
+(use-package! org-roam-capture
+  :after org-roam
+  :config
+  (setq org-roam-capture-templates nil)
+  ;; capture default note
+  (add-to-list 'org-roam-capture-templates
+               '("d" "📝 Default note" plain "%?"
+                 :if-new
+                 (file+head "default/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+  ;; capture notes releated to projects
+  (add-to-list 'org-roam-capture-templates
+               '("p" "🗒 Projects")
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("pn" "🗒 New project note" entry "* %?"
+                 :if-new
+                 (file+head "projects/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n#+filetags: :project:\n\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("pt" "🏷 New project node/tag" plain "%?"
+                 :if-new
+                 (file+head "projects/project_${slug}.org"
+                            ":PROPERTIES:\n\
+:ROAM_ALIASES: ${title}\n\
+:END:\n\
+#+filetags: :project:\n\
+#+title: ${title} Project\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+  ;; capture notes releated to rnd.guru
+  (add-to-list 'org-roam-capture-templates
+               '("r" "🦙 rnd.guru")
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("rn" "🗒 New note" entry "* %?"
+                 :if-new
+                 (file+head "rnd.guru/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n#+filetags: :rnd.guru:\n\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("rt" "🏷 New node/tag" plain "%?"
+                 :if-new
+                 (file+head "rnd.guru/company_${slug}.org"
+                            ":PROPERTIES:\n\
+:ROAM_ALIASES: ${title}\n\
+:END:\n\
+#+filetags: :rnd.guru:\n\
+#+title: ${title} Company\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+  ;; capture notes releated to technology
+  (add-to-list 'org-roam-capture-templates
+               '("t" "💾 Technology")
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("tn" "🗒 New technology note" entry "* %?"
+                 :if-new
+                 (file+head "technology/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n#+filetags: :technology:\n\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("tt" "🏷 New technology node/tag" plain "%?"
+                 :if-new
+                 (file+head "technology/technology_${slug}.org"
+                            ":PROPERTIES:\n\
+:ROAM_ALIASES: ${title}\n\
+:END:\n\
+#+filetags: :technology:\n\
+#+title: ${title} Technology\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+
+
+  )
+
 (use-package! org-roam-dailies
   :after org-roam
   :config
@@ -102,18 +190,20 @@
                '("d" "📋 Daily schedule" entry "* TODO %?\nSCHEDULED: %t"
                  :target
                  (file+head+olp "%<%Y-%m-%d>.org"
-                                "#+title: %<%Y-%m-%d>\n"
+                                "#+title: %<%Y-%m-%d>\n#+filetags: :daily:\n\n"
                                 ("Daily schedule"))
                :unnarrowed t
-               :empty-lines 1))
+               :empty-lines 1)
+               t)
   (add-to-list 'org-roam-dailies-capture-templates
                '("n" "📝 Notes" entry "* %<%H:%M> %?"
                  :target
                  (file+head+olp "%<%Y-%m-%d>.org"
-                                "#+title: %<%Y-%m-%d>\n"
+                                "#+title: %<%Y-%m-%d>\n#+filetags: :daily:\n\n"
                                 ("Notes"))
                :unnarrowed t
-               :empty-lines 1)))
+               :empty-lines 1)
+               t))
 
 (defun +bs/hostname(url)
   (url-host (url-generic-parse-url url)))
