@@ -29,8 +29,10 @@
   (setq undo-tree-visualizer-timestamps t)
   (setq undo-tree-auto-save-history t))
 
-(defun file-notify-rm-all-watches ()
-  "Remove all existing file notification watches from Emacs."
+(defun +other/file-notify-rm-all-watches ()
+  "Remove all existing file notification watches from Emacs. \
+   It is usefull when Emacs is slowing down due to large number of open files by Tramp"
+  ;; Code from: https://www.blogbyben.com/2022/05/gotcha-emacs-on-mac-os-too-many-files.html
   (interactive)
   (maphash
    (lambda (key _value)

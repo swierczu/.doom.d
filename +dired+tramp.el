@@ -22,12 +22,12 @@
   (:map dired-mode-map
         ("TAB" . dired-subtree-toggle)))
 
-(defun xah-dired-sort ()
-  "Sort dired dir listing in different ways."
-  ;; URL `http://ergoemacs.org/emacs/dired_sort.html'
+(defun +other/dired-sort ()
+  "Sort dired dir listing in different ways. Handy switch."
+  ;; Original code from: http://ergoemacs.org/emacs/dired_sort.html
   (interactive)
   (let (-sort-by -arg)
-    (setq -sort-by (ido-completing-read "Sort by:" '( "date" "size" "name" "extension" "dir")))
+    (setq -sort-by (completing-read "Sort by:" '( "date" "size" "name" "extension" "dir")))
     (cond
      ((equal -sort-by "name") (setq -arg "-Al --si --time-style long-iso "))
      ((equal -sort-by "date") (setq -arg "-Al --si --time-style long-iso -t"))

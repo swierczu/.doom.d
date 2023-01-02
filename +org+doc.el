@@ -14,6 +14,7 @@
 ;; org-protocol:
 (defun transform-square-brackets-to-round-ones(string-to-transform)
   "Transforms [ into ( and ] into ), other chars left unchanged."
+  ;; Code from: https://github.com/sprig/org-capture-extension/blob/master/README.md
   (concat
    (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform)))
 
@@ -41,7 +42,7 @@
                  "Note taken on %U \\\ \n%?"
                  :prepend t)))
 
-(defun org-to-clipboard ()
+(defun +other/org-to-clipboard ()
   "Convert the contents of the current buffer or region from Org
    mode to HTML.  Store the result in the clipboard."
    ;; Code from: https://speechcode.com/blog/org-to-clipboard"
@@ -205,12 +206,14 @@
                :empty-lines 1)
                t))
 
-(defun +bs/hostname(url)
+(defun +my/hostname(url)
+  "Get hostname from given URL"
   (url-host (url-generic-parse-url url)))
 
-(defun +bs/web-ref-filename(ref)
+(defun +my/web-ref-filename(ref)
+  "Generate filename to store bookmark in my org-roam system"
   (concat "web/"
-          (+bs/hostname ref)
+          (+my/hostname ref)
           ".org"))
 
 (use-package! org-roam-protocol
@@ -226,8 +229,8 @@
 :END:\n"
            :if-new
            (file+head+olp
-            "%(+bs/web-ref-filename \"${ref}\")"
-            "#+TITLE: %(+bs/hostname \"${ref}\")\n#+filetags: :bookmark:\n\n"
+            "%(+my/web-ref-filename \"${ref}\")"
+            "#+TITLE: %(+my/hostname \"${ref}\")\n#+filetags: :bookmark:\n\n"
             ("${title}"))
            :unnarrowed t
            :empty-lines 1))
@@ -243,8 +246,8 @@ ${body}\n \
 #+END_QUOTE\n"
            :if-new
            (file+head+olp
-            "%(+bs/web-ref-filename \"${ref}\")"
-            "#+TITLE: %(+bs/hostname \"${ref}\")\n#+filetags: :bookmark:\n\n"
+            "%(+my/web-ref-filename \"${ref}\")"
+            "#+TITLE: %(+my/hostname \"${ref}\")\n#+filetags: :bookmark:\n\n"
             ("${title}"))
            :unnarrowed t
            :empty-lines 1)))
