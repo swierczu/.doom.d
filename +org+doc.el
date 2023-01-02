@@ -55,6 +55,17 @@
                              (point-max)
                              "org2clip")))
 
+(defun +other/org-link-copy (&optional arg)
+  "Extract URL from org-mode link and add it to kill ring."
+  ;; Code from https://github.com/SqrtMinusOne/dotfiles/blob/4b176a5bb1a5e20a7fdd7398b74df79701267a7e/.emacs.d/init.el
+  (interactive "P")
+  (let* ((link (org-element-lineage (org-element-context) '(link) t))
+         (type (org-element-property :type link))
+         (url (org-element-property :path link))
+         (url (concat type ":" url)))
+    (kill-new url)
+    (message (concat "Copied URL: " url))))
+
 (use-package! pdf-tools
   :defer t
   :init
