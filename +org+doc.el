@@ -190,6 +190,23 @@
                  :unnarrowed t
                  :empty-lines 1)
                t)
+  ;; capture notes releated to people
+  (add-to-list 'org-roam-capture-templates
+               '("c" "👨 People / Contacts")
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("cp" "🏷 New people/contact" entry "* Contact\n** Mail %?\n** Phone \n\n* Projects\n\n* Notes\n"
+                 :if-new
+                 (file+head "people/contact_${slug}.org"
+                            ":PROPERTIES:\n\
+:ROAM_ALIASES: ${slug}\n\
+:END:\n\
+#+filetags: :people:\n\
+#+title: ${title}\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+
 
 
   )
