@@ -3,16 +3,6 @@
 ;; Install Emacs:
 ;; brew install emacs-plus@28 --with-native-comp --with-imagemagick --with-mailutils --with-no-titlebar --with-modern-papirus-icon
 
-;; Fix for: https://github.com/doomemacs/doomemacs/issues/2386
-(when noninteractive
-  (after! undo-tree
-    (global-undo-tree-mode -1)))
-
-;; Fix for: https://github.com/doomemacs/doomemacs/issues/3406
-(after! straight
-  (add-to-list 'straight-recipes-gnu-elpa-ignored-packages 'seq))
-
-
 (doom! :input
        ;;chinese
        ;;japanese
@@ -209,3 +199,17 @@
        :config
        ;;literate
        (default +bindings +smartparens +evil-commands))
+
+;; Fix for: https://github.com/doomemacs/doomemacs/issues/2386
+(when noninteractive
+  (after! undo-tree
+    (global-undo-tree-mode -1)))
+
+;; Fix for: https://github.com/doomemacs/doomemacs/issues/3406
+(after! straight
+  (add-to-list 'straight-recipes-gnu-elpa-ignored-packages 'seq))
+
+;; Fix for disabled AOT compilation: https://github.com/doomemacs/doomemacs/issues/6811
+(setq native-comp-deferred-compilation nil)
+(after! (doom-packages straight)
+  (setq straight--native-comp-available t))
