@@ -78,9 +78,10 @@
   :defer t
   :after org
   :config
-  (setq deft-directory org-directory)
-  (setq deft-extensions '("org" "txt" "md" "tex"))
-  (setq deft-recursive t))
+  (setq deft-directory org-directory
+        deft-extensions '("org" "txt" "md" "tex")
+        deft-use-filename-as-title t
+        deft-recursive t))
 
 (use-package! org-roam
   :defer t
