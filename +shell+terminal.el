@@ -6,11 +6,13 @@
   (add-hook! 'eshell-directory-change-hook
     (company-mode (if (file-remote-p default-directory) -1 +1)))
   (map! :mode eshell-mode
-        :ni "C-r" #'consult-history))
+        :ni "C-r" #'consult-history)
+  (advice-add 'eshell--complete-commands-list :override #'eshell-fix-1322))
 
 ;; temporal fix for regression in emacs 28:
+;; restore previous version of eshell--complete-commands-list function
 ;; https://github.com/company-mode/company-mode/issues/1322
-(defun eshell--complete-commands-list ()
+(defun eshell-fix-1322 ()
   "Generate list of applicable, visible commands."
   (let ((filename (pcomplete-arg)) glob-name)
     (if (file-name-directory filename)
