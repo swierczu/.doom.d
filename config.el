@@ -14,7 +14,7 @@
   (setq doom-theme 'doom-dracula)
   (global-visual-line-mode t)
   (global-subword-mode 1)
-  (setq display-line-numbers-type t)
+  (setq display-line-numbers-type nil)
   (setq default-directory "~")
   (setq delete-by-moving-to-trash t)
   (setq auto-save-default t)
