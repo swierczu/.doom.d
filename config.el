@@ -7,9 +7,9 @@
   :config
   (setq user-full-name "Bartłomiej Świercz")
   (setq user-mail-address "bartek@rndity.com")
-  (setq doom-font (font-spec :family "Iosevka Term SS04" :size 14.0 :weight 'light))
+  (setq doom-font (font-spec :family "Iosevka Term SS04" :size 15.0 :weight 'light))
   (setq doom-big-font (font-spec :family "Iosevka Term SS04" :size 20.0 :weight 'light))
-  (setq doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 14.0 :weight 'light))
+  (setq doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 15.0 :weight 'light))
   (setq fancy-splash-image (concat doom-user-dir "themes/M-x_butterfly.png"))
   (setq doom-theme 'doom-dracula)
   (global-visual-line-mode t)
