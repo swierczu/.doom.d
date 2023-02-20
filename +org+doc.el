@@ -207,8 +207,29 @@
                  :unnarrowed t
                  :empty-lines 1)
                t)
-
-
+  ;; capture notes releated to sport, health and activity
+  (add-to-list 'org-roam-capture-templates
+               '("s" "🏃 Sport, health & activity")
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("sn" "🗒 New sport note" entry "* %?"
+                 :if-new
+                 (file+head "sport/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n#+filetags: :sport:\n\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("st" "🏷 New sport node/tag" plain "%?"
+                 :if-new
+                 (file+head "sport/sport_${slug}.org"
+                            ":PROPERTIES:\n\
+:END:\n\
+#+filetags: :sport:\n\
+#+title: ${title}\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
 
   )
 
