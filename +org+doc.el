@@ -8,8 +8,11 @@
   (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
   (setq org-log-done t)
   (setq org-log-into-drawer t)
+  (setq org-treat-insert-todo-heading-as-state-change t)
   (setq org-tags-column -80)
-  (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
+  (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕"))
+  (add-to-list 'org-modules 'org-habit t)
+  (setq org-habit-show-all-today t))
 
 ;; org-protocol:
 (defun transform-square-brackets-to-round-ones(string-to-transform)
