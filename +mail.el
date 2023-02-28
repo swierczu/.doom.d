@@ -19,7 +19,7 @@
         mu4e-attachment-dir "~/Downloads"
         mu4e-change-filenames-when-moving t
         mu4e-sent-messages-behavior 'delete
-        ;mu4e-sent-messages-behavior 'sent
+        ;;mu4e-sent-messages-behavior 'sent
         message-kill-buffer-on-exit t
 
         mu4e-personal-addresses '("bartek@rndity.com")
