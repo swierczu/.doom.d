@@ -33,6 +33,7 @@
         shr-color-visible-luminance-min 80
         shr-color-visible-distance-min 5
         shr-use-colors nil
+        shr-use-fonts nil
 
         mu4e-headers-date-format "%y-%m-%d"
         mu4e-headers-time-format "⧖ %H:%M"
