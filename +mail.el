@@ -76,24 +76,24 @@ Bartłomiej Świercz
         mu4e-compose-context-policy 'always-ask)
 
   (setq mu4e-bookmarks
-  '(( :name  "Unread messages"
-             :query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-             :key ?u)
-    ( :name "Today's messages"
-            :query "date:today..now and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-            :key ?t)
-    ( :name "Last 7 days"
-            :query "date:7d..now and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-            :key ?w)
-    ( :name "Messages with images"
-            :query "mime:image/* and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-            :key ?i)
-    ( :name "Messages with PDFs"
-            :query "mime:application/pdf and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-            :key ?p)
-    ( :name "Meeting invitations"
-            :query "file:/\.ics$/"
-            :key ?m)))
+        '(( :name  "Unread messages"
+            :query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
+            :key ?u)
+          ( :name "Today's messages"
+                  :query "date:today..now and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
+                  :key ?t)
+          ( :name "Last 7 days"
+                  :query "date:7d..now and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
+                  :key ?w)
+          ( :name "Messages with images"
+                  :query "mime:image/* and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
+                  :key ?i)
+          ( :name "Messages with PDFs"
+                  :query "mime:application/pdf and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
+                  :key ?p)
+          ( :name "Meeting invitations"
+                  :query "file:/\.ics$/"
+                  :key ?m)))
 
   (setq mu4e-alert-interesting-mail-query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam")
   )
