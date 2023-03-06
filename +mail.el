@@ -82,10 +82,16 @@ Bartłomiej Świercz
         '(( :name  "Unread messages"
             :query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
             :key ?u)
-          ( :name "Today's messages"
+          ( :name "Today's INBOX"
+                  :query "date:today..now and maildir:/bartek@rndity.com/INBOX"
+                  :key ?s)
+          ( :name "Today's ALL messages"
                   :query "date:today..now and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
                   :key ?t)
-          ( :name "Last 7 days"
+          ( :name "Last 7 days INBOX"
+                  :query "date:7d..now and maildir:/bartek@rndity.com/INBOX"
+                  :key ?!)
+          ( :name "Last 7 days ALL messages"
                   :query "date:7d..now and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
                   :key ?w)
           ( :name "Messages with images"
@@ -97,6 +103,8 @@ Bartłomiej Świercz
           ( :name "Meeting invitations"
                   :query "file:/\.ics$/"
                   :key ?m)))
+
+  (setq mu4e-maildir-shortcuts nil)
 
   (setq mu4e-alert-interesting-mail-query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam")
   )
