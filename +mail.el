@@ -11,9 +11,12 @@
         ;; EMAIL_QUEUE_QUIET=t
         sendmail-program (executable-find "msmtpq")
         send-mail-function #'smtpmail-send-it
+        message-send-mail-function #'message-send-mail-with-sendmail
         message-sendmail-f-is-evil t
         message-sendmail-extra-arguments '("--read-envelope-from")
-        message-send-mail-function #'message-send-mail-with-sendmail
+        mail-specify-envelope-from t
+        message-sendmail-envelope-from 'header
+        mail-envelope-from 'header
 
         mu4e-update-interval (* 5 60)
         mu4e-attachment-dir "~/Downloads"
