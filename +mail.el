@@ -6,14 +6,14 @@
         mu4e-root-maildir "~/.maildir"
         mu4e-get-mail-command (concat (executable-find "mbsync") " -a")
 
-        sendmail-program (executable-find "msmtp")
+        ;; Rember to set VAR in msmtpq script:
+        ;; EMAIL_CONN_TEST='n'
+        ;; EMAIL_QUEUE_QUIET=t
+        sendmail-program (executable-find "msmtpq")
         send-mail-function #'smtpmail-send-it
         message-sendmail-f-is-evil t
         message-sendmail-extra-arguments '("--read-envelope-from")
         message-send-mail-function #'message-send-mail-with-sendmail
-        smtpmail-queue-mail t
-        smtpmail-queue-dir (expand-file-name "~/.maildir/queue/cur")
-        smtpmail-store-queue-variables t
 
         mu4e-update-interval (* 5 60)
         mu4e-attachment-dir "~/Downloads"
