@@ -77,10 +77,10 @@
 (load! "+org+doc.el")
 
 ;; -------------------------------
-;; Google services
+;; Internet services & multimedia
 ;; -------------------------------
 
-(load! "+google.el")
+(load! "+internet+multimedia.el")
 
 ;; -------------------------------
 ;; Edit with emacs Everywhere

@@ -38,3 +38,4 @@
   :recipe (:host github :repo "iostapyshyn/eshell-vterm"))
 (package! peep-dired)
 (package! org-roam-ui)
+(package! empv)
