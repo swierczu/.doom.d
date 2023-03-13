@@ -18,7 +18,13 @@
   (setq default-directory "~")
   (setq delete-by-moving-to-trash t)
   (setq auto-save-default t)
-  (setq browse-url-browser-function 'eww-browse-url))
+  (setq browse-url-handlers
+        '(("^https?://instagram\\.com" . browse-url-default-browser)
+          ("^https?://facebook\\.com" . browse-url-default-browser)
+          ("^https?://.*youtube\\.com" . browse-url-default-browser)
+          ("^https?://.*youtu\\.be" . browse-url-default-browser)
+          ("." . eww-browse-url)))
+  )
 
 (use-package! undo-tree
   :config
