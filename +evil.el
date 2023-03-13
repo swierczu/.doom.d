@@ -18,7 +18,6 @@
           :g "s-0"   #'+workspace/switch-to-final)))
 
 (use-package! evil-owl
-  :defer t
   :after evil
   :config
   (setq evil-owl-max-string-length 500)
