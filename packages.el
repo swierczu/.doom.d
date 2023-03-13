@@ -34,8 +34,8 @@
   :recipe (:host github :repo "PillFall/languagetool.el"))
 (package! emacs-powerthesaurus
   :recipe (:host github :repo "SavchenkoValeriy/emacs-powerthesaurus"))
-(package! eshell-vterm ;:disable t
-  :recipe (:host github :repo "iostapyshyn/eshell-vterm"))
 (package! peep-dired)
 (package! org-roam-ui)
 (package! empv)
+(package! eat ;:disable t
+  :recipe (:host codeberg :repo "akib/emacs-eat"))
