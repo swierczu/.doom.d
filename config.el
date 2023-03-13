@@ -26,15 +26,6 @@
           ("." . eww-browse-url)))
   )
 
-(use-package! undo-tree
-  :config
-  (setq undo-limit        10000000)   ;; 1MB
-  (setq undo-strong-limit 100000000)  ;; 100MB
-  (setq undo-outer-limit  1000000000) ;; 1GB
-  (setq undo-tree-visualizer-diff t)
-  (setq undo-tree-visualizer-timestamps t)
-  (setq undo-tree-auto-save-history t))
-
 (defun +other/file-notify-rm-all-watches ()
   "Remove all existing file notification watches from Emacs. \
    It is usefull when Emacs is slowing down due to large number of open files by Tramp"
@@ -50,6 +41,12 @@
 ;; -------------------------------
 
 (load! "+evil.el")
+
+;; -------------------------------
+;; Editor and UI
+;; -------------------------------
+
+(load! "+editor+ui.el")
 
 ;; -------------------------------
 ;; Shells and terminals
