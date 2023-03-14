@@ -36,3 +36,8 @@
      ((equal -sort-by "dir") (setq -arg "-Al --si --time-style long-iso --group-directories-first"))
      (t (error "logic error 09535" )))
     (dired-sort-other -arg )))
+
+(use-package! docker
+  :config
+  ;; workaround for https://github.com/Silex/docker.el/issues/186
+  (setq docker-open-hook '(docker-container-update-status-async)))
