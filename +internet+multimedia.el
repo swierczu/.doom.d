@@ -11,7 +11,10 @@
   :defer t
   :config
   (setq empv-invidious-instance "https://inv.bp.projectsegfau.lt/api/v1")
+  (setq empv-mpv-args nil)
   (add-to-list 'empv-mpv-args "--save-position-on-quit")
+  (add-to-list 'empv-mpv-args "--ytdl-format=best")
+  (add-to-list 'empv-mpv-args "--vid=auto")
   )
 
 (use-package! elfeed
