@@ -1,22 +1,5 @@
 ;;; +shell+terminal.el -*- lexical-binding: t; -*-
 
-(use-package! eshell
-  :defer t
-  :after eat
-  :config
-  (add-hook! 'eshell-directory-change-hook
-    (company-mode (if (file-remote-p default-directory) -1 +1)))
-  (add-hook! 'eshell-load-hook #'eat-eshell-mode)
-  (add-hook! 'eshell-load-hook #'eat-eshell-visual-command-mode)
-
-  ;; evil-owl overrides C-r, thus non standard way is needed to
-  ;; bind consult-history to C-r then map!
-  (evil-make-overriding-map eshell-mode-map 'insert)
-  (evil-define-key 'insert eshell-mode-map
-    "C-r" 'consult-history)
-
-  (advice-add 'eshell--complete-commands-list :override #'eshell-fix-1322))
-
 ;; temporal fix for regression in emacs 28:
 ;; restore previous version of eshell--complete-commands-list function
 ;; https://github.com/company-mode/company-mode/issues/1322
@@ -79,11 +62,31 @@
                         (all-completions filename obarray #'functionp))
                    completions)))))))
 
-(use-package! eat
+(defun eshell-custom-hook ()
+  (interactive)
+  (map! :after eshell
+        :mode eshell-mode
+        :i "C-r" #'consult-history)
+
+  (advice-add 'eshell--complete-commands-list :override #'eshell-fix-1322))
+
+(use-package! eshell
+  :after eat
   :defer t
-  )
+  :config
+  (add-hook! 'eshell-directory-change-hook
+    (company-mode (if (file-remote-p default-directory) -1 +1)))
+  (add-hook! 'eshell-load-hook #'eat-eshell-mode)
+  (add-hook! 'eshell-load-hook #'eat-eshell-visual-command-mode)
+  ;; TODO: eshell-custom-hook is not loaded by eshell-load-hook nor eshell-mode-hook.
+  ;; Currently I don't know why and I call it manually.
+  (add-hook! 'eshell-mode-hook #'eshell-custom-hook))
+
+(use-package! eat
+  :defer t)
 
 (use-package! vterm
+  :defer t
   :config
   (add-to-list 'vterm-tramp-shells '("sshx" "/bin/sh"))
   (add-to-list 'vterm-tramp-shells '("ssh" "/bin/sh")))
