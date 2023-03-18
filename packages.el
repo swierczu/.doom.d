@@ -39,4 +39,5 @@
 (package! empv)
 (package! eat ;:disable t
   :recipe (:host codeberg :repo "akib/emacs-eat"))
-(unpin! (:tools docker))
+(unpin! (:tools docker)
+        (:lang org))
