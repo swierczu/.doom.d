@@ -75,7 +75,9 @@
   (pdf-tools-install)
   :config
   (setq-default pdf-view-display-size 'fit-width)
-  (setq pdf-annot-activate-created-annotations t))
+  (setq pdf-annot-activate-created-annotations t)
+  (add-hook! 'pdf-view-mode-hook
+    (pdf-view-midnight-minor-mode t)))
 
 (use-package! deft
   :defer t
