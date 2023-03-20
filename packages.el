@@ -39,5 +39,9 @@
 (package! empv)
 (package! eat ;:disable t
   :recipe (:host codeberg :repo "akib/emacs-eat"))
+(package!  mermaid-mode
+  :recipe (:host github :repo "abrochard/mermaid-mode"))
+(package!  ob-mermaid
+  :recipe (:host github :repo "arnm/ob-mermaid"))
 (unpin! (:tools docker)
         (:lang org))
