@@ -48,7 +48,7 @@
 (defun +other/org-to-clipboard ()
   "Convert the contents of the current buffer or region from Org
    mode to HTML.  Store the result in the clipboard."
-   ;; Code from: https://speechcode.com/blog/org-to-clipboard"
+  ;; Code from: https://speechcode.com/blog/org-to-clipboard"
   (interactive)
   (if (use-region-p)
       (shell-command-on-region (region-beginning)
@@ -95,14 +95,14 @@
   (setq org-roam-directory org-directory)
   (setq org-roam-db-location (concat user-emacs-directory "org-roam.db"))
   (cl-defmethod org-roam-node-type ((node org-roam-node))
-  "Return the TYPE of NODE."
-  ;; code from https://jethrokuan.github.io/org-roam-guide/
-  (condition-case nil
-      (file-name-nondirectory
-       (directory-file-name
-        (file-name-directory
-         (file-relative-name (org-roam-node-file node) org-roam-directory))))
-    (error "")))
+    "Return the TYPE of NODE."
+    ;; code from https://jethrokuan.github.io/org-roam-guide/
+    (condition-case nil
+        (file-name-nondirectory
+         (directory-file-name
+          (file-name-directory
+           (file-relative-name (org-roam-node-file node) org-roam-directory))))
+      (error "")))
   (setq org-roam-node-display-template
         (format "%s ${doom-hierarchy:*} %s"
                 (propertize "${type:10}" 'face 'font-lock-keyword-face)
@@ -248,8 +248,8 @@
                  (file+head+olp "%<%Y-%m-%d>.org"
                                 "#+title: %<%Y-%m-%d>\n#+filetags: :daily:\n\n"
                                 ("Daily schedule"))
-               :unnarrowed t
-               :empty-lines 1)
+                 :unnarrowed t
+                 :empty-lines 1)
                t)
   (add-to-list 'org-roam-dailies-capture-templates
                '("n" "📝 Notes" entry "* %<%H:%M> %?"
@@ -257,8 +257,8 @@
                  (file+head+olp "%<%Y-%m-%d>.org"
                                 "#+title: %<%Y-%m-%d>\n#+filetags: :daily:\n\n"
                                 ("Notes"))
-               :unnarrowed t
-               :empty-lines 1)
+                 :unnarrowed t
+                 :empty-lines 1)
                t))
 
 (defun +my/hostname(url)
@@ -276,22 +276,22 @@
   :config
   (setq org-roam-capture-ref-templates nil)
   (add-to-list 'org-roam-capture-ref-templates
-        '("r" "Web bookmark reference" entry
-          "* %?\n \
+               '("r" "Web bookmark reference" entry
+                 "* %?\n \
 :PROPERTIES:\n \
 :Link: ${ref}\n \
 :When: %U\n \
 :END:\n"
-           :if-new
-           (file+head+olp
-            "%(+my/web-ref-filename \"${ref}\")"
-            "#+TITLE: %(+my/hostname \"${ref}\")\n#+filetags: :bookmark:\n\n"
-            ("${title}"))
-           :unnarrowed t
-           :empty-lines 1))
+                 :if-new
+                 (file+head+olp
+                  "%(+my/web-ref-filename \"${ref}\")"
+                  "#+TITLE: %(+my/hostname \"${ref}\")\n#+filetags: :bookmark:\n\n"
+                  ("${title}"))
+                 :unnarrowed t
+                 :empty-lines 1))
   (add-to-list 'org-roam-capture-ref-templates
-        '("b" "Web bookmark citation" entry
-          "* %?\n \
+               '("b" "Web bookmark citation" entry
+                 "* %?\n \
 :PROPERTIES:\n \
 :Link: ${ref}\n \
 :When: %U\n \
@@ -299,21 +299,21 @@
 #+BEGIN_QUOTE\n \
 ${body}\n \
 #+END_QUOTE\n"
-           :if-new
-           (file+head+olp
-            "%(+my/web-ref-filename \"${ref}\")"
-            "#+TITLE: %(+my/hostname \"${ref}\")\n#+filetags: :bookmark:\n\n"
-            ("${title}"))
-           :unnarrowed t
-           :empty-lines 1)))
+                 :if-new
+                 (file+head+olp
+                  "%(+my/web-ref-filename \"${ref}\")"
+                  "#+TITLE: %(+my/hostname \"${ref}\")\n#+filetags: :bookmark:\n\n"
+                  ("${title}"))
+                 :unnarrowed t
+                 :empty-lines 1)))
 
 (use-package! websocket
-    :after org-roam)
+  :after org-roam)
 
 (use-package! org-roam-ui
-    :after org-roam
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
