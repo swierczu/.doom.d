@@ -13,3 +13,12 @@
   :config
   (map! :map embark-url-map
          :desc "Open with system browser" "D" #'browse-url-default-browser))
+
+(use-package! doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (setq doom-dracula-brighter-modeline nil)
+  (setq doom-dracula-brighter-comments nil)
+  (setq doom-dracula-comment-bg nil)
+  (setq doom-dracula-colorful-headers nil))
