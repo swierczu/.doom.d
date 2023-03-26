@@ -5,6 +5,8 @@
   :init
   (setq org-directory "~/org")
   :config
+  (setq org-attach-id-dir "~/Dropbox/notes/.attach/")
+  (setq org-attach-directory "~/Dropbox/notes/.attach/")
   (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
   (setq org-log-done t)
   (setq org-log-into-drawer t)
