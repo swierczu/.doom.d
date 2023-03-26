@@ -15,17 +15,20 @@
   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕"))
   (add-to-list 'org-modules 'org-habit t)
   (setq org-habit-show-all-today t)
-  (set-face-attribute 'org-document-title nil :height 1.4)
+  (set-face-attribute 'org-document-title nil :height 1.4 :weight 'extra-bold)
   (set-face-attribute 'org-level-1 nil :extend nil :height 1.3)
   (set-face-attribute 'org-level-2 nil :extend nil :height 1.2)
   (set-face-attribute 'org-level-3 nil :extend nil :height 1.1)
   (set-face-attribute 'org-tag nil
-                      :weight 'normal
+                      :weight 'light
                       :height 1.0
                       :box t
-                      :foreground "#b6b6b2"
+                      :foreground "#bd93f9"
                       :inverse-video t)
-  )
+  (setq org-tag-faces
+        '(("noexport" . (:foreground "#b6b6b2" :height 1.0))
+          ("project"  . (:foreground "#ff79c6"))
+          ("meeting"  . (:foreground "#ff79c6")))))
 
 ;; org-protocol:
 (defun transform-square-brackets-to-round-ones(string-to-transform)

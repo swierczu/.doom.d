@@ -21,4 +21,6 @@
   (setq doom-dracula-brighter-modeline nil)
   (setq doom-dracula-brighter-comments nil)
   (setq doom-dracula-comment-bg nil)
-  (setq doom-dracula-colorful-headers nil))
+  (setq doom-dracula-colorful-headers nil)
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config))

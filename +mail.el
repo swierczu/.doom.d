@@ -107,7 +107,15 @@ Bartłomiej Świercz
   (setq mu4e-maildir-shortcuts nil)
 
   (setq mu4e-alert-interesting-mail-query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam")
-  )
+
+    (set-face-attribute 'gnus-header-subject nil
+                        :height 1.4
+                        :weight 'extra-bold
+                        :foreground "#ffb86c")
+    (set-face-attribute 'gnus-header-from nil
+                        :height 1.0
+                        :weight 'bold
+                        :foreground "#ff79c6"))
 
 (use-package! org-msg
   :defer t
