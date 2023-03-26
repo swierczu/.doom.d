@@ -43,5 +43,7 @@
   :recipe (:host github :repo "abrochard/mermaid-mode"))
 (package!  ob-mermaid
   :recipe (:host github :repo "arnm/ob-mermaid"))
+(package!  org-noter
+  :recipe (:host github :repo "org-noter/org-noter"))
 (unpin! (:tools docker)
         (:lang org))
