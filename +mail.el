@@ -1,6 +1,17 @@
 ;;; +mail.el -*- lexical-binding: t; -*-
 
-(after! mu4e
+(use-package! mu4e
+  :defer t
+  :init
+  ;; fix for mu4e 1.10.0 and evil-collection
+  ;; https://github.com/emacs-evil/evil-collection/issues/695
+  (defun mu4e--main-action-str (name func)
+    "This seems to be needed until evil-collection supports the latest
+  version of mu4e."
+    "mu4e-main-action")
+  (require 'mu4e)
+  (remove-hook 'mu4e-main-mode-hook 'evil-collection-mu4e-update-main-view)
+  :config
   (setq mail-user-agent 'mu4e-user-agent
         mu4e-mu-binary (executable-find "mu")
         mu4e-root-maildir "~/.maildir"
