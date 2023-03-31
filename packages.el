@@ -1,7 +1,6 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
-(package! modus-themes)
 (package! vue-mode)
 (package! org-super-agenda)
 (package! prettier-js)
@@ -45,5 +44,7 @@
   :recipe (:host github :repo "arnm/ob-mermaid"))
 (package!  org-noter
   :recipe (:host github :repo "org-noter/org-noter"))
+(package!  mu4e-thread
+  :recipe (:host github :repo "rougier/mu4e-thread"))
 (unpin! (:tools docker)
         (:lang org))

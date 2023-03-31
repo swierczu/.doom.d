@@ -42,7 +42,7 @@
         mu4e-headers-visible-lines 10
         mu4e-headers-visible-columns 100
         mu4e-split-view 'vertical
-        mu4e-headers-skip-duplicates t
+        mu4e-search-skip-duplicates nil
         message-cite-reply-position 'above
         shr-color-visible-luminance-min 80
         shr-color-visible-distance-min 5
@@ -119,29 +119,37 @@ Bartłomiej Świercz
 
   (setq mu4e-alert-interesting-mail-query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam")
 
-    (set-face-attribute 'gnus-header-subject nil
-                        :height 1.4
-                        :weight 'extra-bold
-                        :foreground "#ffb86c")
-    (set-face-attribute 'gnus-header-from nil
-                        :height 1.0
-                        :weight 'bold
-                        :foreground "#ff79c6")
+  (set-face-attribute 'gnus-header-subject nil
+                      :height 1.4
+                      :weight 'extra-bold
+                      :foreground "#ffb86c")
+  (set-face-attribute 'gnus-header-from nil
+                      :height 1.0
+                      :weight 'bold
+                      :foreground "#ff79c6")
 
-    (add-to-list 'display-buffer-alist
-                 '("^\\*mu4e" nil))
-    (add-to-list 'display-buffer-alist
-                 '("\\*mu4e-article\\*" display-buffer-in-side-window
-                   (side . right)
-                   (window-width . 0.5)))
+  (add-to-list 'display-buffer-alist
+               '("^\\*mu4e" nil))
+  (add-to-list 'display-buffer-alist
+               '("\\*mu4e-article\\*" display-buffer-in-side-window
+                 (side . right)
+                 (window-width . 0.5)))
 
-    (map! "C-c s" #'window-toggle-side-windows)
+  (map! "C-c s" #'window-toggle-side-windows)
 
-    (advice-add '+mu4e-view-select-mime-part-action :override
-                #'fix/+mu4e-view-select-mime-part-action)
+  (advice-add '+mu4e-view-select-mime-part-action :override
+              #'fix/+mu4e-view-select-mime-part-action)
 
-    (evil-make-overriding-map mu4e-view-mode-map 'normal)
-    (evil-define-key 'normal mu4e-view-mode-map "q" 'mu4e-view-quit))
+  (evil-make-overriding-map mu4e-view-mode-map 'normal)
+  (evil-define-key 'normal mu4e-view-mode-map "q" 'mu4e-view-quit)
+  (evil-define-key 'normal mu4e-headers-mode-map "T" 'mu4e-view-mark-thread)
+
+  (require 'mu4e-thread)
+  (evil-define-key 'normal mu4e-headers-mode-map "za" 'mu4e-thread-fold-toggle)
+  (evil-define-key 'normal mu4e-headers-mode-map "zc" 'mu4e-thread-fold)
+  (evil-define-key 'normal mu4e-headers-mode-map "zo" 'mu4e-thread-unfold)
+  (evil-define-key 'normal mu4e-headers-mode-map "zm" 'mu4e-thread-fold-all)
+  (evil-define-key 'normal mu4e-headers-mode-map "zr" 'mu4e-thread-unfold-all))
 
 (defun fix/+mu4e-view-select-mime-part-action ()
   "Select a MIME part, and perform an action on it."
@@ -321,3 +329,6 @@ This function is used as an advice function of `org-html--todo'.
                           todo))))
           (funcall orig-fun todo info)))))
   (advice-add 'org-html--todo :around #'+org-msg-html--todo))
+
+(use-package! mu4e-thread
+  :defer t)
