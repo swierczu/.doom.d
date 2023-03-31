@@ -87,8 +87,10 @@
 
 (use-package! pdf-tools
   :defer t
+  :magic
+  ("%PDF" . pdf-view-mode)
   :init
-  (pdf-tools-install)
+  (pdf-tools-install :no-query)
   :config
   (setq-default pdf-view-display-size 'fit-width)
   (setq pdf-annot-activate-created-annotations t)
