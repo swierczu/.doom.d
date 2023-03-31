@@ -126,7 +126,32 @@ Bartłomiej Świercz
     (set-face-attribute 'gnus-header-from nil
                         :height 1.0
                         :weight 'bold
-                        :foreground "#ff79c6"))
+                        :foreground "#ff79c6")
+
+    (add-to-list 'display-buffer-alist
+                 '("^\\*mu4e" nil))
+    (add-to-list 'display-buffer-alist
+                 '("\\*mu4e-article\\*" display-buffer-in-side-window
+                   (side . right)
+                   (window-width . 0.5)))
+
+    (map! "C-c s" #'window-toggle-side-windows)
+
+    (advice-add '+mu4e-view-select-mime-part-action :override
+                #'fix/+mu4e-view-select-mime-part-action)
+
+    (evil-make-overriding-map mu4e-view-mode-map 'normal)
+    (evil-define-key 'normal mu4e-view-mode-map "q" 'mu4e-view-quit))
+
+(defun fix/+mu4e-view-select-mime-part-action ()
+  "Select a MIME part, and perform an action on it."
+  (interactive)
+  (let ((labeledparts (+mu4e-part-selectors (mu4e--view-gather-mime-parts))))
+    (if labeledparts
+        (mu4e-view-mime-part-action
+         (cadr (assoc (completing-read "Select part: " (mapcar #'car labeledparts))
+                      labeledparts)))
+      (user-error (mu4e-format "No parts found")))))
 
 (use-package! org-msg
   :defer t
