@@ -14,6 +14,7 @@
   (setq doom-theme 'doom-dracula)
   (global-visual-line-mode t)
   (global-subword-mode 1)
+  (setq calendar-week-start-day 1)
   (setq display-line-numbers-type nil)
   (setq default-directory "~")
   (setq delete-by-moving-to-trash t)
