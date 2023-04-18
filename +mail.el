@@ -9,9 +9,11 @@
     "This seems to be needed until evil-collection supports the latest
   version of mu4e."
     "mu4e-main-action")
-  (require 'mu4e)
-  (remove-hook 'mu4e-main-mode-hook 'evil-collection-mu4e-update-main-view)
   :config
+  ;; fix for mu4e 1.10.0 and evil-collection
+  ;; https://github.com/emacs-evil/evil-collection/issues/695
+  (remove-hook 'mu4e-main-mode-hook 'evil-collection-mu4e-update-main-view)
+
   (setq mail-user-agent 'mu4e-user-agent
         mu4e-mu-binary (executable-find "mu")
         mu4e-root-maildir "~/.maildir"
@@ -79,9 +81,7 @@ Bartłomiej Świercz
 /Chief Executive Officer/ of *[[https://rndity.com][rnd.guru]]*
 
 /tel: +48 603 717 633/
-#+end_signature"
-
-                                              ))
+#+end_signature"))
                       t)
 
   (setq +mu4e-gmail-accounts '(("bartek@rndity.com"     "/bartek@rndity.com")))
@@ -135,21 +135,27 @@ Bartłomiej Świercz
                  (side . right)
                  (window-width . 0.5)))
 
-  (map! "C-c s" #'window-toggle-side-windows)
 
   (advice-add '+mu4e-view-select-mime-part-action :override
               #'fix/+mu4e-view-select-mime-part-action)
 
-  (evil-make-overriding-map mu4e-view-mode-map 'normal)
-  (evil-define-key 'normal mu4e-view-mode-map "q" 'mu4e-view-quit)
-  (evil-define-key 'normal mu4e-headers-mode-map "T" 'mu4e-view-mark-thread)
 
-  (require 'mu4e-thread)
-  (evil-define-key 'normal mu4e-headers-mode-map "za" 'mu4e-thread-fold-toggle)
-  (evil-define-key 'normal mu4e-headers-mode-map "zc" 'mu4e-thread-fold)
-  (evil-define-key 'normal mu4e-headers-mode-map "zo" 'mu4e-thread-unfold)
-  (evil-define-key 'normal mu4e-headers-mode-map "zm" 'mu4e-thread-fold-all)
-  (evil-define-key 'normal mu4e-headers-mode-map "zr" 'mu4e-thread-unfold-all))
+  (map! "C-c s" #'window-toggle-side-windows
+        :map mu4e-view-mode-map
+        :n "q" #'mu4e-view-quit
+        :map mu4e-headers-mode-map
+        :n "T" #'mu4e-view-mark-thread))
+
+(use-package! mu4e-thread
+  :after mu4e
+  :defer t
+  :config
+  (map! :map mu4e-headers-mode-map
+        :n "za" #'mu4e-thread-fold-toggle
+        :n "zc" #'mu4e-thread-fold
+        :n "zo" #'mu4e-thread-unfold
+        :n "zm" #'mu4e-thread-fold-all
+        :n "zr" #'mu4e-thread-unfold-all))
 
 (defun fix/+mu4e-view-select-mime-part-action ()
   "Select a MIME part, and perform an action on it."
@@ -163,7 +169,7 @@ Bartłomiej Świercz
 
 (use-package! org-msg
   :defer t
-  :after mu4e
+  :after (mu4e org)
   :config
   (setq org-msg-options "html-postamble:nil H:5 num:3 ^:{} toc:nil author:nil email:nil \\n:t tex:dvipng d:nil tags:nil")
   (setq org-msg-startup "hidestars indent inlineimages")
@@ -329,6 +335,3 @@ This function is used as an advice function of `org-html--todo'.
                           todo))))
           (funcall orig-fun todo info)))))
   (advice-add 'org-html--todo :around #'+org-msg-html--todo))
-
-(use-package! mu4e-thread
-  :defer t)
