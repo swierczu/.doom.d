@@ -32,8 +32,7 @@
   (setq empv-mpv-args nil)
   (add-to-list 'empv-mpv-args "--save-position-on-quit")
   (add-to-list 'empv-mpv-args "--ytdl-format=best")
-  (add-to-list 'empv-mpv-args "--vid=auto")
-  )
+  (add-to-list 'empv-mpv-args "--vid=auto"))
 
 (use-package! elfeed
   :defer t
