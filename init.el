@@ -21,14 +21,14 @@
        (vertico +icons)          ; the search engine of the future
 
        :ui
-       deft              ; notational velocity for Emacs
+       ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       hydra
+       ;;hydra
        indent-guides     ; highlighted indent columns
        ;;(ligatures +extra)      ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
@@ -36,7 +36,7 @@
        nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
-       (popup +all +defaults)   ; tame sudden yet inevitable temporary windows
+       (popup +defaults)   ; tame sudden yet inevitable temporary windows
        ;;tabs              ; a tab bar for Emacs
        treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
@@ -85,7 +85,7 @@
        ;;tree-sitter
        ansible
        biblio
-       ;;debugger          ; FIXME stepping through code, to help you add bugs
+       debugger          ; FIXME stepping through code, to help you add bugs
        direnv
        (docker +lsp)
        editorconfig      ; let someone else argue about tabs vs spaces
@@ -117,7 +117,7 @@
        ;;agda              ; types of types of types of types...
        (cc +lsp)               ; C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
-       ;;common-lisp       ; if you've seen one lisp, you've seen them all
+       common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
@@ -144,7 +144,7 @@
        (latex +fold)             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
-       ;;ledger            ; an accounting system in Emacs
+       ledger            ; an accounting system in Emacs
        lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
@@ -163,7 +163,7 @@
         +dragndrop
         +gnuplot
         +pandoc)
-       (php +lsp)               ; perl's insecure younger brother
+       ;;(php +lsp)               ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        (python +lsp +pyright)            ; beautiful is better than ugly
@@ -178,7 +178,7 @@
        ;;scheme            ; a fully conniving family of lisps
        (sh)                ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
-       solidity          ; do you need a blockchain? No.
+       ;;solidity          ; do you need a blockchain? No.
        ;;(swift +lsp)             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        (web +lsp)               ; the tubes
@@ -194,22 +194,8 @@
        everywhere        ; *leave* Emacs!? You must be joking
        irc               ; how neckbeards socialize
        (rss +org)        ; emacs as an RSS reader
-       ;;twitter           ; twitter client https://twitter.com/vnought
+       twitter           ; twitter client https://twitter.com/vnought
 
        :config
        ;;literate
        (default +bindings +smartparens +evil-commands))
-
-;; Fix for: https://github.com/doomemacs/doomemacs/issues/2386
-(when noninteractive
-  (after! undo-tree
-    (global-undo-tree-mode -1)))
-
-;; Fix for: https://github.com/doomemacs/doomemacs/issues/3406
-(after! straight
-  (add-to-list 'straight-recipes-gnu-elpa-ignored-packages 'seq))
-
-;; Fix for disabled AOT compilation: https://github.com/doomemacs/doomemacs/issues/6811
-(setq native-comp-deferred-compilation nil)
-(after! (doom-packages straight)
-  (setq straight--native-comp-available t))
