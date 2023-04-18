@@ -6,8 +6,6 @@
 (package! prettier-js)
 (package! git-commit)
 (package! pocket-reader)
-(package! gnugo)
-(package! powerline)
 (package! dired-narrow)
 (package! dired-subtree)
 (package! command-log-mode
@@ -15,8 +13,6 @@
 (package! google-translate)
 (package! kubernetes)
 (package! kubernetes-evil)
-(package! nano-theme
-  :recipe (:host github :repo "rougier/nano-theme"))
 (package! openapi-yaml-mode
   :recipe (:host github :repo "magoyette/openapi-yaml-mode"))
 (package! jq-mode
@@ -33,7 +29,6 @@
   :recipe (:host github :repo "PillFall/languagetool.el"))
 (package! emacs-powerthesaurus
   :recipe (:host github :repo "SavchenkoValeriy/emacs-powerthesaurus"))
-(package! peep-dired)
 (package! org-roam-ui)
 (package! empv)
 (package! eat ;:disable t
@@ -44,6 +39,8 @@
   :recipe (:host github :repo "arnm/ob-mermaid"))
 (package!  org-noter
   :recipe (:host github :repo "org-noter/org-noter"))
+(package!  chatgpt-shell
+  :recipe (:host github :repo "xenodium/chatgpt-shell"))
 (package!  mu4e-thread
   :recipe (:host github :repo "rougier/mu4e-thread"))
 (unpin! (:tools docker)
