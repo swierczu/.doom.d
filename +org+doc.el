@@ -25,10 +25,15 @@
                       :box t
                       :foreground "#bd93f9"
                       :inverse-video t)
+  (set-face-attribute 'org-table nil :extend nil :background "#23242f")
   (setq org-tag-faces
         '(("noexport" . (:foreground "#b6b6b2" :height 1.0))
           ("project"  . (:foreground "#ff79c6"))
-          ("meeting"  . (:foreground "#ff79c6")))))
+          ("meeting"  . (:foreground "#ff79c6"))))
+  (map! :after org
+        :map evil-org-mode-map
+        :n "gj" #'evil-next-visual-line
+        :n "gk" #'evil-previous-visual-line))
 
 ;; org-protocol:
 (defun transform-square-brackets-to-round-ones(string-to-transform)
@@ -96,15 +101,6 @@
   (setq pdf-annot-activate-created-annotations t)
   (add-hook! 'pdf-view-mode-hook
     (pdf-view-midnight-minor-mode t)))
-
-(use-package! deft
-  :defer t
-  :after org
-  :config
-  (setq deft-directory org-directory
-        deft-extensions '("org" "txt" "md" "tex")
-        deft-use-filename-as-title t
-        deft-recursive t))
 
 (use-package! org-roam
   :defer t
