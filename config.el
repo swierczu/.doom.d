@@ -91,7 +91,7 @@
 ;; https://github.com/dmgerman/editWithEmacs.spoon
 ;; -------------------------------
 
-(load! "../.hammerspoon/Spoons/editWithEmacs.spoon/hammerspoon")
+(load! "../.hammerspoon/Spoons/editWithEmacs.spoon/hammerspoon.el")
 
 ;; -------------------------------
 ;; Mail
