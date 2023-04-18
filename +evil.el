@@ -15,7 +15,9 @@
           :g "s-7"   #'+workspace/switch-to-6
           :g "s-8"   #'+workspace/switch-to-7
           :g "s-9"   #'+workspace/switch-to-8
-          :g "s-0"   #'+workspace/switch-to-final)))
+          :g "s-0"   #'+workspace/switch-to-final
+          :g "s-}"   #'+workspace/switch-right
+          :g "s-{"   #'+workspace/switch-left)))
 
 (use-package! evil-owl
   :after evil
