@@ -1,5 +1,23 @@
 ;;; +internet+multimedia.el -*- lexical-binding: t; -*-
 
+(use-package! eww
+  :defer t
+  :config
+  (setq shr-color-visible-luminance-min 80
+        shr-color-visible-distance-min 5
+        shr-use-colors nil
+        shr-use-fonts nil)
+  (add-hook 'eww-after-render-hook #'+other/eww-rename-buffer))
+
+(defun +other/eww-rename-buffer ()
+    "Rename `eww-mode' buffer so sites open in new page."
+    ;; http://xahlee.info/emacs/emacs/emacs_eww_web_browser.html
+    (let ((title (plist-get eww-data :title)))
+      (when (eq major-mode 'eww-mode)
+        (if title
+            (rename-buffer (concat "eww " title ) t)
+          (rename-buffer "eww" t)))))
+
 (use-package! google-translate
   :defer t
   :custom
