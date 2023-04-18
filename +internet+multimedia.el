@@ -47,3 +47,12 @@
         :desc "set to read later" "l" (lambda ()
                                         (interactive)
                                         (elfeed-show-tag 'readlater))))
+
+(use-package! chatgpt-shell
+  :defer t
+  :commands
+  (chatgpt-shell dall-e-shell)
+  :init
+  (setq chatgpt-shell-openai-key
+        (lambda ()
+          (nth 0 (process-lines "pass" "show" "OpenAI/bartek@rndity.com")))))
