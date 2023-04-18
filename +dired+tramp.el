@@ -5,8 +5,8 @@
   :config
   (setq tramp-default-method "sshx")
   (setq remote-file-name-inhibit-cache nil)
-  (setq tramp-encoding-shell "/bin/bash")
-  (setq tramp-default-remote-shell "/bin/bash"))
+  (setq tramp-encoding-shell "/bin/sh")
+  (setq tramp-default-remote-shell "/bin/sh"))
 
 (use-package! dired
   :defer t
