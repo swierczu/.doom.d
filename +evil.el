@@ -17,7 +17,9 @@
           :g "s-9"   #'+workspace/switch-to-8
           :g "s-0"   #'+workspace/switch-to-final
           :g "s-}"   #'+workspace/switch-right
-          :g "s-{"   #'+workspace/switch-left)))
+          :g "s-{"   #'+workspace/switch-left)
+        :g "C-c s" #'window-toggle-side-windows
+        :g "C-c c" #'calendar))
 
 (use-package! evil-owl
   :after evil

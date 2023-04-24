@@ -140,8 +140,7 @@ Bartłomiej Świercz
               #'fix/+mu4e-view-select-mime-part-action)
 
 
-  (map! "C-c s" #'window-toggle-side-windows
-        :map mu4e-view-mode-map
+  (map! :map mu4e-view-mode-map
         :n "q" #'mu4e-view-quit
         :map mu4e-headers-mode-map
         :n "T" #'mu4e-view-mark-thread))
