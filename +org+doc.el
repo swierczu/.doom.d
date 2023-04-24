@@ -28,6 +28,7 @@
   (set-face-attribute 'org-table nil :extend nil :background "#23242f")
   (setq org-tag-faces
         '(("noexport" . (:foreground "#b6b6b2" :height 1.0))
+          ("ATTACH" . (:foreground "#b6b6b2" :height 1.0))
           ("project"  . (:foreground "#ff79c6"))
           ("meeting"  . (:foreground "#ff79c6"))))
   (map! :after org
