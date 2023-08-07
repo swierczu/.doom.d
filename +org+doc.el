@@ -11,7 +11,7 @@
   (setq org-log-done t)
   (setq org-log-into-drawer t)
   (setq org-treat-insert-todo-heading-as-state-change t)
-  (setq org-tags-column -80)
+  (setq org-tags-column 0)
   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕"))
   (add-to-list 'org-modules 'org-habit t)
   (setq org-habit-show-all-today t)
