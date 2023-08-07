@@ -1,7 +1,7 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
-(package! vue-mode)
+;; (package! vue-mode)
 (package! org-super-agenda)
 (package! prettier-js)
 (package! git-commit)
@@ -15,14 +15,8 @@
 (package! kubernetes-evil)
 (package! openapi-yaml-mode
   :recipe (:host github :repo "magoyette/openapi-yaml-mode"))
-(package! jq-mode
-  :recipe (:host github :repo "ljos/jq-mode"))
 (package! evil-owl)
 (package! evil-goggles)
-;; Disable json-mode and use jsonian instead:
-(package! json-mode :disable t)
-(package! jsonian
-  :recipe (:host github :repo "iwahbe/jsonian"))
 (package! ct
   :recipe (:host github :repo "neeasade/ct.el"))
 (package! languagetool
@@ -44,4 +38,5 @@
 (package!  mu4e-thread
   :recipe (:host github :repo "rougier/mu4e-thread"))
 (unpin! (:tools docker)
-        (:lang org))
+        ;;(:lang org)
+)
