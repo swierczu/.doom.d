@@ -1,7 +1,7 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
 ;; Install Emacs:
-;; brew install emacs-plus@28 --with-native-comp --with-imagemagick --with-mailutils --with-no-titlebar --with-modern-papirus-icon
+;; brew install emacs-plus --with-ctags --with-mailutils --with-xwidgets --with-imagemagick --with-native-comp --with-poll --with-modern-papirus-icon
 
 (doom! :input
        ;;chinese
@@ -28,7 +28,7 @@
        (emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       ;;hydra
+       hydra
        indent-guides     ; highlighted indent columns
        ;;(ligatures +extra)      ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
@@ -82,7 +82,7 @@
        grammar           ; tasing grammar mistake every you make
 
        :tools
-       ;;tree-sitter
+       tree-sitter
        ansible
        biblio
        debugger          ; FIXME stepping through code, to help you add bugs
@@ -97,8 +97,8 @@
         +dictionary
         +offline
         +docsets)        ; ...or in Dash docsets locally
-       lsp
-       magit             ; a git porcelain for Emacs
+       (lsp +peek)
+       (magit +forge)             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        pass              ; password manager for nerds
        pdf               ; pdf enhancements
@@ -115,7 +115,7 @@
 
        :lang
        ;;agda              ; types of types of types of types...
-       (cc +lsp)               ; C/C++/Obj-C madness
+       (cc +lsp +tree-sitter)               ; C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
        common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
@@ -132,20 +132,20 @@
        ;;fsharp            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
-       (go +lsp)         ; the hipster dialect
+       (go +lsp +tree-sitter)         ; the hipster dialect
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
-       (json)              ; At least it ain't XML
+       (json +lsp +tree-sitter)              ; At least it ain't XML
        (java +meghanada) ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp +tree-sitter)
        ;;(julia +lsp)            ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex +fold)             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
        ledger            ; an accounting system in Emacs
-       lua               ; one-based indices? one-based indices
+       (lua +lsp +tree-sitter +fennel) ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -163,26 +163,26 @@
         +dragndrop
         +gnuplot
         +pandoc)
-       ;;(php +lsp)               ; perl's insecure younger brother
+       (php +lsp +tree-sitter) ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +lsp +pyright)            ; beautiful is better than ugly
+       (python +lsp +tree-sitter +pyright +pyenv)
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
-       rest              ; Emacs as a REST client
+       (rest +jq)          ; Emacs as a REST client
        ;;rst               ; ReST in peace
-       ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (ruby +rails +lsp +tree-sitter) ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+       (rust +lsp +tree-sitter) ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
-       (sh)                ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +lsp +tree-sitter) ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
-       ;;(swift +lsp)             ; who asked for emoji variables?
+       (swift +lsp +tree-sitter) ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       (web +lsp)               ; the tubes
-       (yaml)              ; JSON, but readable
+       (web +lsp +tree-sitter)               ; the tubes
+       (yaml +lsp +tree-sitter) ; JSON, but readable
 
        :email
        (mu4e +gmail +org)
@@ -194,7 +194,7 @@
        everywhere        ; *leave* Emacs!? You must be joking
        irc               ; how neckbeards socialize
        (rss +org)        ; emacs as an RSS reader
-       twitter           ; twitter client https://twitter.com/vnought
+       ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
        ;;literate
