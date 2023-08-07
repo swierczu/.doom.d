@@ -22,5 +22,6 @@
         doom-dracula-brighter-comments nil
         doom-dracula-comment-bg nil
         doom-dracula-colorful-headers nil)
+  (setq doom-theme 'doom-dracula)
   (doom-themes-visual-bell-config)
   (doom-themes-org-config))
