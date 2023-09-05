@@ -96,12 +96,13 @@
 (use-package proced
   :commands proced
   :config
-  (setq-default proced-auto-update-flag t)
-  (setq proced-auto-update-interval 1
-        proced-goal-attribute nil
-        ;; only for Emacs 29:
-        proced-enable-color-flag t)
   (add-to-list
    'proced-format-alist
-   '(custom user pid ppid sess tree pcpu pmem rss start time state (args comm)))
-  (setq-default proced-format 'custom))
+   '(custom user pid tree pcpu pmem vsize rss start time state (args comm)))
+  (setq proced-auto-update-interval 2
+        proced-auto-update-flag nil
+        proced-show-remote-processes t
+        proced-goal-attribute nil
+        proced-tree-flag t
+        proced-enable-color-flag t
+        proced-format 'custom))
