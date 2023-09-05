@@ -37,6 +37,13 @@
   :recipe (:host github :repo "xenodium/chatgpt-shell"))
 (package!  mu4e-thread
   :recipe (:host github :repo "rougier/mu4e-thread"))
+
+;; For testing and checking:
+(package! swagg
+  :recipe (:host github :repo "isamert/swagg.el"))
+(package! verb)
+
+;; Unpined packages:
 (unpin! (:tools docker)
         ;;(:lang org)
 )
