@@ -37,6 +37,8 @@
   :recipe (:host github :repo "xenodium/chatgpt-shell"))
 (package!  mu4e-thread
   :recipe (:host github :repo "rougier/mu4e-thread"))
+(package! xr)
+(package! detached)
 
 ;; For testing and checking:
 (package! swagg
@@ -46,4 +48,5 @@
 ;; Unpined packages:
 (unpin! (:tools docker)
         ;;(:lang org)
+        ;;dirvish
 )

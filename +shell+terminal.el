@@ -64,10 +64,9 @@
 
 (defun eshell-custom-hook ()
   (interactive)
-  (map! :after eshell
-        :mode eshell-mode
-        :i "C-r" #'consult-history)
-
+  (map! :mode eshell-mode
+        :i "C-r" #'consult-history
+        :i "M-RET" #'detached-eshell-send-input)
   (advice-add 'eshell--complete-commands-list :override #'eshell-fix-1322))
 
 (use-package! eshell
@@ -78,9 +77,10 @@
     (company-mode (if (file-remote-p default-directory) -1 +1)))
   (add-hook! 'eshell-load-hook #'eat-eshell-mode)
   (add-hook! 'eshell-load-hook #'eat-eshell-visual-command-mode)
-  ;; TODO: eshell-custom-hook is not loaded by eshell-load-hook nor eshell-mode-hook.
-  ;; Currently I don't know why and I call it manually.
-  (add-hook! 'eshell-mode-hook #'eshell-custom-hook))
+  (map! :mode eshell-mode
+        :i "C-r" #'consult-history
+        :i "M-RET" #'detached-eshell-send-input)
+  (advice-add 'eshell--complete-commands-list :override #'eshell-fix-1322))
 
 (use-package! eat
   :defer t)
@@ -106,3 +106,16 @@
         proced-tree-flag t
         proced-enable-color-flag t
         proced-format 'custom))
+
+(use-package detached
+  :init
+  (detached-init)
+  :bind (;; Replace `async-shell-command' with `detached-shell-command'
+         ([remap async-shell-command] . detached-shell-command)
+         ;; Replace `compile' with `detached-compile'
+         ([remap compile] . detached-compile)
+         ([remap recompile] . detached-compile-recompile)
+         ;; Replace built in completion of sessions with `consult'
+         ([remap detached-open-session] . detached-consult-session))
+  :custom ((detached-show-output-on-attach t)
+           (detached-terminal-data-command system-type)))
