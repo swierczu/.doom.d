@@ -16,6 +16,10 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
   (setq remote-file-name-inhibit-cache nil)
   (setq tramp-encoding-shell "/bin/sh")
   (setq tramp-default-remote-shell "/bin/sh")
+  ;; Tips to speed up connections
+  (setq tramp-verbose 0)
+  (setq tramp-chunksize 2000)
+  (setq tramp-use-ssh-controlmaster-options nil)
   ;; Workaround for 'Forbidden reentrant call of Tramp'
   ;; source: https://github.com/emacs-lsp/lsp-mode/issues/2514#issuecomment-759452037
   (advice-add 'start-file-process-shell-command :around #'start-file-process-shell-command@around))
