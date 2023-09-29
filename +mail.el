@@ -2,13 +2,6 @@
 
 (use-package! mu4e
   :defer t
-  :init
-  ;; fix for mu4e 1.10.0 and evil-collection
-  ;; https://github.com/emacs-evil/evil-collection/issues/695
-  (defun mu4e--main-action-str (name func)
-    "This seems to be needed until evil-collection supports the latest
-  version of mu4e."
-    "mu4e-main-action")
   :config
   ;; fix for mu4e 1.10.0 and evil-collection
   ;; https://github.com/emacs-evil/evil-collection/issues/695
@@ -313,12 +306,12 @@ This function is used as an advice function of `org-html--todo'.
 - TODO is a TODO keyword.
 - INFO is a property list."
     (cl-flet ((rgb-to-hex (r g b)
-                          (format "#%02x%02x%02x" (* r 255) (* g 255) (* b 255))))
+                (format "#%02x%02x%02x" (* r 255) (* g 255) (* b 255))))
       (cl-macrolet ((add-if-exist (val lst sym)
-                                  `(when ,val
-                                     (push (cons ,sym (apply #'rgb-to-hex
-                                                             (color-name-to-rgb ,val)))
-                                           ,lst))))
+                      `(when ,val
+                         (push (cons ,sym (apply #'rgb-to-hex
+                                                 (color-name-to-rgb ,val)))
+                               ,lst))))
         (if org-msg-export-in-progress
             (let ((face (org-get-todo-face todo)))
               (when (and todo face)
