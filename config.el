@@ -14,7 +14,23 @@
   (add-to-list 'default-frame-alist '(undecorated . nil))
   (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
   (add-to-list 'default-frame-alist '(scroll-bar-width . 4))
-  (setq frame-title-format nil)
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  (setq ns-use-proxy-icon nil)
+  ;; Code from: https://tecosaur.github.io/emacs-config/config.html#window-title
+  (setq frame-title-format
+        '(""
+          (:eval
+           (if (string-match-p (regexp-quote (or (bound-and-true-p org-roam-directory) "\u0000"))
+                               (or buffer-file-name ""))
+               (replace-regexp-in-string
+                ".*/[0-9]*-?" "☰ "
+                (subst-char-in-string ?_ ?\s buffer-file-name))
+             "%b"))
+          (:eval
+           (when-let ((project-name (and (featurep 'projectile) (projectile-project-name))))
+             (unless (string= "-" project-name)
+               (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
   (global-visual-line-mode t)
   (pixel-scroll-precision-mode t)
   (setq pixel-scroll-precision-interpolate-page t)
