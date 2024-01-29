@@ -29,7 +29,9 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
   :config
   ;; Ensure dired-omit-mode is not started with dired. It hides some files transparently:
   (remove-hook 'dired-mode-hook 'dired-omit-mode)
-  (setq dired-listing-switches "-Al --si --time-style long-iso -t"))
+  (setq dired-listing-switches "-Al --si --time-style long-iso -t"
+        dired-mouse-drag-files t
+        dired-async-mode 1))
 
 (use-package! dired-subtree
   :defer t
