@@ -28,7 +28,7 @@
        (emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       hydra
+       ;; hydra
        indent-guides     ; highlighted indent columns
        ;;(ligatures +extra)      ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
@@ -85,7 +85,7 @@
        tree-sitter
        ansible
        biblio
-       debugger          ; FIXME stepping through code, to help you add bugs
+       (debugger +lsp)         ; FIXME stepping through code, to help you add bugs
        direnv
        (docker +lsp)
        editorconfig      ; let someone else argue about tabs vs spaces
@@ -122,7 +122,7 @@
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
-       (dart +lsp +flutter)   ; paint ui and not much else
+       ;;(dart +lsp +flutter)   ; paint ui and not much else
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
