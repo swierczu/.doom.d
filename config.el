@@ -12,11 +12,13 @@
   (setq doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 15.0 :weight 'light))
   (setq fancy-splash-image (concat doom-user-dir "themes/M-x_butterfly.png"))
   (add-to-list 'default-frame-alist '(undecorated . nil))
-  (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
-  (add-to-list 'default-frame-alist '(scroll-bar-width . 4))
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
   (setq ns-use-proxy-icon nil)
+  ;; Fix for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=44007
+  ;; Taken from: https://www.reddit.com/r/emacs/comments/17nl7cw/comment/k7u1ueu/?utm_source=share&utm_medium=web2x&context=3
+  (setq process-adaptive-read-buffering nil)
+  (setq read-process-output-max (* 4 1024 1024))
   ;; Code from: https://tecosaur.github.io/emacs-config/config.html#window-title
   (setq frame-title-format
         '(""
