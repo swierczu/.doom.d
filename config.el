@@ -47,8 +47,7 @@
           ("^https?://facebook\\.com" . browse-url-default-browser)
           ("^https?://.*youtube\\.com" . browse-url-default-browser)
           ("^https?://.*youtu\\.be" . browse-url-default-browser)
-          ("." . eww-browse-url)))
-  )
+          ("." . eww-browse-url))))
 
 (defun +other/file-notify-rm-all-watches ()
   "Remove all existing file notification watches from Emacs. \
