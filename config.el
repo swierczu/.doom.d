@@ -95,6 +95,7 @@
 
 (load! "+lang+web.el")
 (load! "+lang+json.el")
+(load! "+lang+sql.el")
 
 ;; -------------------------------
 ;; org-mode and other documents
