@@ -39,8 +39,12 @@
   :recipe (:host github :repo "rougier/mu4e-thread"))
 (package! xr)
 (package! detached)
+(package! autothemer)
+(package! spacious-padding)
 
 ;; For testing and checking:
+(package! ef-themes
+  :recipe (:host sourcehut :repo "protesilaos/ef-themes"))
 (package! swagg
   :recipe (:host github :repo "isamert/swagg.el"))
 (package! verb)
@@ -49,4 +53,4 @@
 (unpin! (:tools docker)
         ;;(:lang org)
         ;;dirvish
-)
+        )
