@@ -17,11 +17,28 @@
 (use-package! doom-themes
   :config
   (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (setq doom-dracula-brighter-modeline nil
+        doom-themes-enable-italic t
+        doom-themes-padded-modeline t)
+  (setq doom-dracula-brighter-modeline t
         doom-dracula-brighter-comments nil
         doom-dracula-comment-bg nil
         doom-dracula-colorful-headers nil)
   (setq doom-theme 'doom-dracula)
   (doom-themes-visual-bell-config)
   (doom-themes-org-config))
+
+(use-package! ef-themes
+  :config
+  (setq ef-themes-mixed-fonts t
+        ef-themes-variable-pitch-ui t))
+
+(use-package! spacious-padding
+  :defer t
+  :hook (after-init . spacious-padding-mode)
+  :config
+  (setq! spacious-padding-widths '(:internal-border-width 8
+                                   :header-line-width 2
+                                   :mode-line-width 2
+                                   :tab-width 4
+                                   :right-divider-width 8
+                                   :scroll-bar-width 8)))
