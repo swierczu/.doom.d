@@ -20,8 +20,9 @@
   (set-face-attribute 'org-level-2 nil :extend nil :height 1.2)
   (set-face-attribute 'org-level-3 nil :extend nil :height 1.1)
   (set-face-attribute 'org-tag nil
-                      :weight 'light
-                      :height 1.0
+                      :inherit 'fixed-pitch
+                      :weight 'medium
+                      :height 0.9
                       :box t
                       :foreground "#bd93f9"
                       :inverse-video t)
