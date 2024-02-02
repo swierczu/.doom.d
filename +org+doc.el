@@ -23,9 +23,10 @@
                       :inherit 'fixed-pitch
                       :weight 'medium
                       :height 0.9
-                      :box t
+                      :box '(:line-width (1 . 1) :color "#bd93f9" :style 'flat-button)
+                      :slant 'oblique
                       :foreground "#bd93f9"
-                      :inverse-video t)
+                      :inverse-video nil)
   (set-face-attribute 'org-table nil :extend nil :background "#23242f")
   (setq org-tag-faces
         '(("noexport" . (:foreground "#b6b6b2" :height 1.0))
