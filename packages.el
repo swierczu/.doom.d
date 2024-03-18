@@ -35,8 +35,6 @@
   :recipe (:host github :repo "org-noter/org-noter"))
 (package!  chatgpt-shell
   :recipe (:host github :repo "xenodium/chatgpt-shell"))
-(package!  mu4e-thread
-  :recipe (:host github :repo "rougier/mu4e-thread"))
 (package! xr)
 (package! detached)
 (package! autothemer)
