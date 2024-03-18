@@ -37,7 +37,20 @@
   (pixel-scroll-precision-mode t)
   (setq pixel-scroll-precision-interpolate-page t)
   (global-subword-mode 1)
+
   (setq calendar-week-start-day 1)
+  ;; adding week number to calendar
+  ;; taken from https://stackoverflow.com/a/21367291
+  (setq calendar-intermonth-text
+        '(propertize
+          (format "%2d"
+                  (car
+                   (calendar-iso-from-absolute
+                    (calendar-absolute-from-gregorian (list month day year)))))
+          'font-lock-face 'font-lock-warning-face))
+  (setq calendar-intermonth-header
+        (propertize "Wk" 'font-lock-face 'font-lock-keyword-face))
+
   (setq display-line-numbers-type nil)
   (setq default-directory "~")
   (setq delete-by-moving-to-trash t)
@@ -47,7 +60,8 @@
           ("^https?://facebook\\.com" . browse-url-default-browser)
           ("^https?://.*youtube\\.com" . browse-url-default-browser)
           ("^https?://.*youtu\\.be" . browse-url-default-browser)
-          ("." . eww-browse-url))))
+          ("." . eww-browse-url)))
+  (setq browse-url-generic-program "open"))
 
 (defun +other/file-notify-rm-all-watches ()
   "Remove all existing file notification watches from Emacs. \
