@@ -8,6 +8,7 @@
 (package! pocket-reader)
 (package! dired-narrow)
 (package! dired-subtree)
+(package! dired-filter)
 (package! command-log-mode
   :recipe (:host github :repo "lewang/command-log-mode"))
 (package! google-translate)
