@@ -154,6 +154,7 @@
         +attach
         +babel
         +capture
+        +crypt
         +journal
         +export
         +present
