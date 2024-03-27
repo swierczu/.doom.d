@@ -9,9 +9,10 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company
-        +auto            ; as-you-type code completion
-        +childframe)           ; the ultimate code completion backend
+       (corfu +orderless)
+       ;; (company
+       ;;  +auto            ; as-you-type code completion
+       ;;  +childframe)           ; the ultimate code completion backend
        ;;(helm +fuzzy +icons)              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;; (ivy
