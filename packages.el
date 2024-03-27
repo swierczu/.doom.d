@@ -47,6 +47,7 @@
 (package! swagg
   :recipe (:host github :repo "isamert/swagg.el"))
 (package! verb)
+(package! casual)
 
 ;; Unpined packages:
 (unpin! (:tools docker)
