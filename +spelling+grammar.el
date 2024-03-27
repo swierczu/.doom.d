@@ -27,3 +27,6 @@
   (setq languagetool-java-arguments '("-Dfile.encoding=UTF-8")
         languagetool-console-command "/usr/local/opt/languagetool/libexec/languagetool-commandline.jar"
         languagetool-server-command "/usr/local/opt/languagetool/libexec/languagetool-server.jar"))
+
+;; TODO jinx:
+;; https://github.com/doomemacs/doomemacs/issues/7617#issuecomment-1952479210
