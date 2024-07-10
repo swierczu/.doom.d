@@ -10,13 +10,13 @@
   (add-hook 'eww-after-render-hook #'+other/eww-rename-buffer))
 
 (defun +other/eww-rename-buffer ()
-    "Rename `eww-mode' buffer so sites open in new page."
-    ;; http://xahlee.info/emacs/emacs/emacs_eww_web_browser.html
-    (let ((title (plist-get eww-data :title)))
-      (when (eq major-mode 'eww-mode)
-        (if title
-            (rename-buffer (concat "eww " title ) t)
-          (rename-buffer "eww" t)))))
+  "Rename `eww-mode' buffer so sites open in new page."
+  ;; http://xahlee.info/emacs/emacs/emacs_eww_web_browser.html
+  (let ((title (plist-get eww-data :title)))
+    (when (eq major-mode 'eww-mode)
+      (if title
+          (rename-buffer (concat "eww " title ) t)
+        (rename-buffer "eww" t)))))
 
 (use-package! google-translate
   :defer t
@@ -46,6 +46,29 @@
         :desc "set to read later" "l" (lambda ()
                                         (interactive)
                                         (elfeed-show-tag 'readlater))))
+
+(use-package! elfeed-tube
+  :defer t
+  :after elfeed
+  :demand t
+  :config
+  ;; (setq elfeed-tube-auto-save-p nil) ; default value
+  ;; (setq elfeed-tube-auto-fetch-p t)  ; default value
+  (elfeed-tube-setup)
+
+  :bind (:map elfeed-show-mode-map
+         ("F" . elfeed-tube-fetch)
+         ([remap save-buffer] . elfeed-tube-save)
+         :map elfeed-search-mode-map
+         ("F" . elfeed-tube-fetch)
+         ([remap save-buffer] . elfeed-tube-save)))
+
+(use-package! elfeed-tube-mpv
+  :defer t
+  :after elfeed
+  :bind (:map elfeed-show-mode-map
+              ("C-c C-f" . elfeed-tube-mpv-follow-mode)
+              ("C-c C-w" . elfeed-tube-mpv-where)))
 
 (use-package! chatgpt-shell
   :defer t

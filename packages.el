@@ -47,7 +47,18 @@
 (package! swagg
   :recipe (:host github :repo "isamert/swagg.el"))
 (package! verb)
-(package! casual)
+
+(package! casual-calc
+  :recipe (:host github :repo "kickingvegas/casual-calc"))
+
+(package! casual-isearch
+  :recipe (:host github :repo "kickingvegas/casual-isearch"))
+
+(package! casual-dired
+  :recipe (:host github :repo "kickingvegas/casual-dired"))
+
+(package! elfeed-tube)
+(package! elfeed-tube-mpv)
 
 ;; Unpined packages:
 (unpin! (:tools docker)

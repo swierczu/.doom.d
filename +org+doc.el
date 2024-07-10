@@ -23,7 +23,7 @@
                       :inherit 'fixed-pitch
                       :weight 'medium
                       :height 0.9
-                      :box '(:line-width (1 . 1) :color "#bd93f9" :style 'flat-button)
+                      :box '(:line-width (1 . 1) :color "#bd93f9" :style nil)
                       :slant 'oblique
                       :foreground "#bd93f9"
                       :inverse-video nil)
