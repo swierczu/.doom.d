@@ -127,8 +127,8 @@
 ;; Edit with emacs Everywhere
 ;; https://github.com/dmgerman/editWithEmacs.spoon
 ;; -------------------------------
-
-(load! "../.hammerspoon/Spoons/editWithEmacs.spoon/hammerspoon.el")
+(:if (featurep :system 'macos)
+    (load! "../.hammerspoon/Spoons/editWithEmacs.spoon/hammerspoon.el"))
 
 ;; -------------------------------
 ;; Mail
