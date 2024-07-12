@@ -27,11 +27,6 @@
   (doom-themes-visual-bell-config)
   (doom-themes-org-config))
 
-(use-package! ef-themes
-  :config
-  (setq ef-themes-mixed-fonts t
-        ef-themes-variable-pitch-ui t))
-
 (use-package! spacious-padding
   :defer t
   :hook (after-init . spacious-padding-mode)

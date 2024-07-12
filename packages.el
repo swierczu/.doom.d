@@ -20,13 +20,11 @@
 (package! evil-goggles)
 (package! ct
   :recipe (:host github :repo "neeasade/ct.el"))
-(package! languagetool
-  :recipe (:host github :repo "PillFall/languagetool.el"))
 (package! emacs-powerthesaurus
   :recipe (:host github :repo "SavchenkoValeriy/emacs-powerthesaurus"))
 (package! org-roam-ui)
 (package! empv)
-(package! eat ;:disable t
+(package! eat
   :recipe (:host codeberg :repo "akib/emacs-eat"))
 (package!  mermaid-mode
   :recipe (:host github :repo "abrochard/mermaid-mode"))
@@ -34,31 +32,17 @@
   :recipe (:host github :repo "arnm/ob-mermaid"))
 (package!  org-noter
   :recipe (:host github :repo "org-noter/org-noter"))
-(package!  chatgpt-shell
-  :recipe (:host github :repo "xenodium/chatgpt-shell"))
 (package! xr)
 (package! detached)
 (package! autothemer)
 (package! spacious-padding)
+(package! elfeed-tube)
+(package! elfeed-tube-mpv)
 
 ;; For testing and checking:
-(package! ef-themes
-  :recipe (:host sourcehut :repo "protesilaos/ef-themes"))
 (package! swagg
   :recipe (:host github :repo "isamert/swagg.el"))
 (package! verb)
-
-(package! casual-calc
-  :recipe (:host github :repo "kickingvegas/casual-calc"))
-
-(package! casual-isearch
-  :recipe (:host github :repo "kickingvegas/casual-isearch"))
-
-(package! casual-dired
-  :recipe (:host github :repo "kickingvegas/casual-dired"))
-
-(package! elfeed-tube)
-(package! elfeed-tube-mpv)
 
 ;; Unpined packages:
 (unpin! (:tools docker)

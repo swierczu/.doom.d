@@ -3,6 +3,13 @@
 ;; Install Emacs:
 ;; brew install emacs-plus --with-ctags --with-mailutils --with-xwidgets --with-imagemagick --with-native-comp --with-poll --with-modern-papirus-icon
 
+(when (string-equal system-type "android")
+  (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
+    (setenv "PATH" (format "%s:%s" termuxpath
+		           (getenv "PATH")))
+    (push termuxpath exec-path)
+    (push "~/.config/emacs/bin" exec-path)))
+
 (doom! :input
        ;;chinese
        ;;japanese
@@ -78,9 +85,8 @@
        syntax              ; tasing you for every semicolon you forget
        (spell            ; tasing you for misspelling misspelling
         +flyspell
-        +hunspell)
-                                        ;+everywhere)
-       grammar           ; tasing grammar mistake every you make
+        +hunspell)       ;+everywhere)
+       (:if (featurep :system 'macos) grammar) ; tasing grammar mistake every you make
 
        :tools
        tree-sitter
@@ -110,7 +116,7 @@
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
+       (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
        tty               ; improve the terminal Emacs experience
 
        :lang
