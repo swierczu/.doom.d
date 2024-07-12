@@ -26,6 +26,7 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
 
 (use-package! dired
   :defer t
+  :hook (dired-mode . dired-hide-details-mode)
   :config
   ;; Ensure dired-omit-mode is not started with dired. It hides some files transparently:
   (remove-hook 'dired-mode-hook 'dired-omit-mode)
