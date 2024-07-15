@@ -127,7 +127,7 @@
 ;; Edit with emacs Everywhere
 ;; https://github.com/dmgerman/editWithEmacs.spoon
 ;; -------------------------------
-(:if (featurep :system 'macos)
+(if (featurep :system 'macos)
     (load! "../.hammerspoon/Spoons/editWithEmacs.spoon/hammerspoon.el"))
 
 ;; -------------------------------
