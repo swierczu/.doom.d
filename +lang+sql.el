@@ -1,3 +1,5 @@
 ;;; +lang+sql.el -*- lexical-binding: t; -*-
 
-(load! "priv/sql-connection.el")
+(let ((file-path (expand-file-name "priv/sql-connection.el" user-emacs-directory)))
+  (when (file-exists-p file-path)
+    (load file-path)))
