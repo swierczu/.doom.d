@@ -2,15 +2,10 @@
 ;;; $DOOMDIR/packages.el
 
 ;; (package! vue-mode)
-(package! org-super-agenda)
-(package! prettier-js)
-(package! git-commit)
 (package! pocket-reader)
 (package! dired-narrow)
 (package! dired-subtree)
 (package! dired-filter)
-(package! command-log-mode
-  :recipe (:host github :repo "lewang/command-log-mode"))
 (package! google-translate)
 (package! kubernetes)
 (package! kubernetes-evil)
@@ -20,8 +15,6 @@
 (package! evil-goggles)
 (package! ct
   :recipe (:host github :repo "neeasade/ct.el"))
-(package! emacs-powerthesaurus
-  :recipe (:host github :repo "SavchenkoValeriy/emacs-powerthesaurus"))
 (package! org-roam-ui)
 (package! empv)
 (package! eat
@@ -43,6 +36,8 @@
 (package! swagg
   :recipe (:host github :repo "isamert/swagg.el"))
 (package! verb)
+(package! dslide)
+(package! gptel)
 
 ;; Unpined packages:
 (unpin! (:tools docker)

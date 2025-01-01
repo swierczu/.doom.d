@@ -118,4 +118,12 @@
          ;; Replace built in completion of sessions with `consult'
          ([remap detached-open-session] . detached-consult-session))
   :custom ((detached-show-output-on-attach t)
-           (detached-terminal-data-command system-type)))
+           (detached-terminal-data-command system-type))
+  :config
+  (set-popup-rule! "^\\*detached-" :size 0.5)
+  (set-popup-rule! "^\\*Detached" :size 0.3))
+
+(let ((file-path (expand-file-name "priv/gptel-key.el" user-emacs-directory)))
+  (when (file-exists-p file-path)
+    (load file-path)))
+
