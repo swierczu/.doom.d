@@ -73,9 +73,9 @@
   :defer t
   :hook (eshell-directory-change . (lambda ()
                                      (company-mode (if (file-remote-p default-directory) -1 +1))))
-  :hook (eshell-first-time-mode . #'eat-eshell-mode)
+  :custom
+  (eshell-visual-commands nil)
   :config
-  (setq eshell-visual-commands nil)
   (map! :mode eshell-mode
         :i "C-r" #'consult-history
         :i "M-RET" #'detached-eshell-send-input)
@@ -83,6 +83,7 @@
 
 (use-package! eat
   ;; Don't forget to run tic -x eat.ti (found on the source)
+  ;; or run https://elpa.nongnu.org/nongnu-devel/doc/eat.html#Not-Recognized
   :config
   (eat-eshell-mode t))
 
