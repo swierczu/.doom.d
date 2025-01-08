@@ -70,20 +70,21 @@
   (advice-add 'eshell--complete-commands-list :override #'eshell-fix-1322))
 
 (use-package! eshell
-  :after eat
   :defer t
+  :hook (eshell-directory-change . (lambda ()
+                                     (company-mode (if (file-remote-p default-directory) -1 +1))))
+  :hook (eshell-first-time-mode . #'eat-eshell-mode)
   :config
-  (add-hook! 'eshell-directory-change-hook
-    (company-mode (if (file-remote-p default-directory) -1 +1)))
-  (add-hook! 'eshell-load-hook #'eat-eshell-mode)
-  (add-hook! 'eshell-load-hook #'eat-eshell-visual-command-mode)
+  (setq eshell-visual-commands nil)
   (map! :mode eshell-mode
         :i "C-r" #'consult-history
         :i "M-RET" #'detached-eshell-send-input)
   (advice-add 'eshell--complete-commands-list :override #'eshell-fix-1322))
 
 (use-package! eat
-  :defer t)
+  ;; Don't forget to run tic -x eat.ti (found on the source)
+  :config
+  (eat-eshell-mode t))
 
 (use-package! vterm
   :defer t

@@ -18,7 +18,12 @@
 (package! org-roam-ui)
 (package! empv)
 (package! eat
-  :recipe (:host codeberg :repo "akib/emacs-eat"))
+  :recipe (:host codeberg :repo "akib/emacs-eat"
+           :files ("*.el" ("term" "term/*.el") "*.texi"
+                   "*.ti" ("terminfo/e" "terminfo/e/*")
+                   ("terminfo/65" "terminfo/65/*")
+                   ("integration" "integration/*")
+                   (:exclude ".dir-locals.el" "*-tests.el"))))
 (package!  mermaid-mode
   :recipe (:host github :repo "abrochard/mermaid-mode"))
 (package!  ob-mermaid
