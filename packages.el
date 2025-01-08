@@ -43,6 +43,9 @@
 (package! verb)
 (package! dslide)
 (package! gptel)
+(package!  treesitter-context
+  :recipe (:host github :repo "zbelial/treesitter-context.el"))
+(package! powerthesaurus)
 
 ;; Unpined packages:
 (unpin! (:tools docker)
