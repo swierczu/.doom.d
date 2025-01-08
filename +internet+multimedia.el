@@ -45,7 +45,14 @@
         :map elfeed-show-mode-map
         :desc "set to read later" "l" (lambda ()
                                         (interactive)
-                                        (elfeed-show-tag 'readlater))))
+                                        (elfeed-show-tag 'readlater)))
+  ;; temporal fix
+  ;; https://github.com/skeeto/elfeed/issues/466#issuecomment-1275327427
+  (define-advice elfeed-search--header (:around (oldfun &rest args))
+    (if elfeed-db
+        (apply oldfun args)
+      "No database loaded yet"))
+  )
 
 (use-package! elfeed-tube
   :defer t
