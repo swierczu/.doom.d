@@ -34,6 +34,13 @@
   (add-to-list 'empv-mpv-args "--ytdl-format=best")
   (add-to-list 'empv-mpv-args "--vid=auto"))
 
+(defun +my/elfeed-show-xwidget ()
+  (interactive)
+  (let ((link (elfeed-entry-link elfeed-show-entry)))
+    (when link
+      (message "Sent to xwidget-webkit: %s" link)
+      (xwidget-webkit-browse-url link))))
+
 (use-package! elfeed
   :defer t
   :config
@@ -45,7 +52,9 @@
         :map elfeed-show-mode-map
         :desc "set to read later" "l" (lambda ()
                                         (interactive)
-                                        (elfeed-show-tag 'readlater)))
+                                        (elfeed-show-tag 'readlater))
+        :map elfeed-show-mode-map
+        :desc "open feed in xwidget-webkig" "x" #'+my/elfeed-show-xwidget)
   ;; temporal fix
   ;; https://github.com/skeeto/elfeed/issues/466#issuecomment-1275327427
   (define-advice elfeed-search--header (:around (oldfun &rest args))
