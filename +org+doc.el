@@ -252,6 +252,29 @@
                  :unnarrowed t
                  :empty-lines 1)
                t)
+  ;; capture notes releated to skydiving
+  (add-to-list 'org-roam-capture-templates
+               '("b" "🪂 Skydiving")
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("bn" "🗒 New skydiving note" entry "* %?"
+                 :if-new
+                 (file+head "skydiving/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n#+filetags: :skydiving:\n\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
+  (add-to-list 'org-roam-capture-templates
+               '("bt" "🏷 New skydiving node/tag" plain "%?"
+                 :if-new
+                 (file+head "skydiving/skydiving_${slug}.org"
+                            ":PROPERTIES:\n\
+:END:\n\
+#+filetags: :skydiving:\n\
+#+title: ${title}\n")
+                 :unnarrowed t
+                 :empty-lines 1)
+               t)
 
   )
 
