@@ -122,6 +122,7 @@
   :custom ((detached-show-output-on-attach t)
            (detached-terminal-data-command system-type))
   :config
+  (setq detached-shell-program "/usr/local/bin/zsh")
   (set-popup-rule! "^\\*detached-" :size 0.5)
   (set-popup-rule! "^\\*Detached" :size 0.3))
 
