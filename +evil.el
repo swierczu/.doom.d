@@ -19,7 +19,8 @@
           :g "s-}"   #'+workspace/switch-right
           :g "s-{"   #'+workspace/switch-left)
         :g "C-c s" #'window-toggle-side-windows
-        :g "C-c c" #'calendar))
+        :g "C-c c" #'calendar
+        :g "C-c C-d" #'dirvish))
 
 (use-package! evil-owl
   :after evil
