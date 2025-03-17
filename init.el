@@ -1,7 +1,9 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-;; Install Emacs:
-;; brew install emacs-plus --with-ctags --with-mailutils --with-xwidgets --with-imagemagick --with-native-comp --with-poll --with-modern-papirus-icon
+;; Install Emacs on MacOS:
+;; brew install emacs-plus@30 --with-ctags --with-mailutils --with-xwidgets --with-imagemagick --with-modern-papirus-icon
+;; osascript -e 'tell application "Finder" to make alias file to posix file "/usr/local/opt/emacs-plus@30/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
+;; codesign --force --deep --sign - -v --strip-disallowed-xattrs /usr/local/Cellar/emacs-plus@30/30.1/Emacs.app
 
 (when (string-equal system-type "android")
   (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
