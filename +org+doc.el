@@ -3,10 +3,12 @@
 (use-package! org
   :defer t
   :init
-  (setq org-directory "~/org")
+  (setq note-directory "~/notes")
+  (setq org-directory (concat note-directory "/org"))
   :config
-  (setq org-attach-id-dir "~/Dropbox/notes/.attach/")
-  (setq org-attach-directory "~/Dropbox/notes/.attach/")
+  (setq org-attach-id-dir (concat note-directory "/.attach/"))
+  (setq org-attach-directory (concat note-directory "/.attach/"))
+  (setq org-id-locations-file (concat note-directory "/.orgids"))
   (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
   (setq org-log-done t)
   (setq org-log-into-drawer t)
