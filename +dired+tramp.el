@@ -56,6 +56,10 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
      (t (error "logic error 09535" )))
     (dired-sort-other -arg )))
 
+(use-package! dirvish
+  :config
+  (setq dirvish-hide-details t))
+
 (use-package! docker
   :config
   ;; workaround for https://github.com/Silex/docker.el/issues/186
