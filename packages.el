@@ -36,6 +36,9 @@
 (package! spacious-padding)
 (package! elfeed-tube)
 (package! elfeed-tube-mpv)
+(package! hcl-mode)
+(package! hurl-mode
+  :recipe (:host github :repo "jaszhe/hurl-mode" :files ("*.el")))
 
 ;; For testing and checking:
 (package! swagg
@@ -50,8 +53,6 @@
   :recipe (:host github :repo "emarsden/pg-el"))
 (package! pgmacs
   :recipe (:host github :repo "emarsden/pgmacs"))
-(package! hurl-mode
-  :recipe (:host github :repo "jaszhe/hurl-mode" :files ("*.el")))
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 
