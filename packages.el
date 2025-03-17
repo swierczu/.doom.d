@@ -46,9 +46,17 @@
 (package!  treesitter-context
   :recipe (:host github :repo "zbelial/treesitter-context.el"))
 (package! powerthesaurus)
+(package! pg
+  :recipe (:host github :repo "emarsden/pg-el"))
+(package! pgmacs
+  :recipe (:host github :repo "emarsden/pgmacs"))
+(package! hurl-mode
+  :recipe (:host github :repo "jaszhe/hurl-mode" :files ("*.el")))
+;; (package!
+;;   :recipe (:host github :repo ""))
 
 ;; Unpined packages:
-(unpin! (:tools docker)
-        ;;(:lang org)
-        ;;dirvish
-        )
+;; (unpin! (:tools docker)
+;;         ;;(:lang org)
+;;         ;;dirvish
+;;         )
