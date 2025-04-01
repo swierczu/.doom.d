@@ -64,3 +64,6 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
   :config
   ;; workaround for https://github.com/Silex/docker.el/issues/186
   (setq docker-open-hook '(docker-container-update-status-async)))
+
+(use-package! dockerfile-mode
+  :mode ".*dockerfile.*")
