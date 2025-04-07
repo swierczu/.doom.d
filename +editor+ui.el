@@ -27,6 +27,10 @@
   (doom-themes-visual-bell-config)
   (doom-themes-org-config))
 
+(use-package! doom-modeline
+  :custom
+  (doom-modeline-buffer-file-name-style 'truncate-upto-project))
+
 (use-package! spacious-padding
   :defer t
   :hook (after-init . spacious-padding-mode)
