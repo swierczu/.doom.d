@@ -23,19 +23,15 @@
   (setq frame-title-format
         '(""
           (:eval
-           (if (string-match-p (regexp-quote (or (bound-and-true-p org-roam-directory) "\u0000"))
-                               (or buffer-file-name ""))
-               (replace-regexp-in-string
-                ".*/[0-9]*-?" "☰ "
-                (subst-char-in-string ?_ ?\s buffer-file-name))
-             "%b"))
+           (buffer-name))
           (:eval
-           (if buffer-file-name
-               (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s")
-                       (file-name-directory (buffer-file-name)))
-             (when default-directory
-               (when-let* ((remote (file-remote-p default-directory)))
-                 (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") remote)))))
+           (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s")
+                   (if buffer-file-name
+                       (file-name-directory (buffer-file-name))
+                     (when default-directory
+                       (if-let* ((remote (file-remote-p default-directory)))
+                           remote
+                         default-directory)))))
           (:eval
            (when-let ((project-name (and (featurep 'projectile) (projectile-project-name))))
              (unless (string= "-" project-name)
