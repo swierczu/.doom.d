@@ -30,8 +30,12 @@
                 (subst-char-in-string ?_ ?\s buffer-file-name))
              "%b"))
           (:eval
-           (if buffer-file-name (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s")
-                                        (file-name-directory (buffer-file-name)))))
+           (if buffer-file-name
+               (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s")
+                       (file-name-directory (buffer-file-name)))
+             (when default-directory
+               (when-let* ((remote (file-remote-p default-directory)))
+                 (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") remote)))))
           (:eval
            (when-let ((project-name (and (featurep 'projectile) (projectile-project-name))))
              (unless (string= "-" project-name)
