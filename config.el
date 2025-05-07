@@ -23,9 +23,9 @@
   (setq frame-title-format
         '(""
           (:eval
-           (buffer-name))
+           (format (if (buffer-modified-p)  " ◯ %s ◯ " " ●  %s ● ") (buffer-name)))
           (:eval
-           (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s")
+           (format (if (buffer-modified-p)  " ↺ %s ↻ " " ⇛ %s ⇚ ")
                    (if buffer-file-name
                        (file-name-directory (buffer-file-name))
                      (when default-directory
@@ -35,8 +35,7 @@
           (:eval
            (when-let ((project-name (and (featurep 'projectile) (projectile-project-name))))
              (unless (string= "-" project-name)
-               (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))
-          ))
+               (format " [%s]" project-name))))))
   (global-visual-line-mode t)
   (pixel-scroll-precision-mode t)
   (setq pixel-scroll-precision-interpolate-page t)
