@@ -45,7 +45,7 @@
   :recipe (:host github :repo "isamert/swagg.el"))
 (package! verb)
 (package! dslide)
-(package! gptel)
+(package! gptel :recipe (:nonrecursive t))
 (package!  treesitter-context
   :recipe (:host github :repo "zbelial/treesitter-context.el"))
 (package! powerthesaurus)
