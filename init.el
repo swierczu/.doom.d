@@ -8,7 +8,7 @@
 (when (string-equal system-type "android")
   (let ((termuxpath "/data/data/com.termux/files/usr/bin"))
     (setenv "PATH" (format "%s:%s" termuxpath
-		           (getenv "PATH")))
+                           (getenv "PATH")))
     (push termuxpath exec-path)
     (push "~/.config/emacs/bin" exec-path)))
 

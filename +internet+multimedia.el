@@ -7,8 +7,9 @@
         shr-color-visible-distance-min 5
         shr-use-colors nil
         shr-use-fonts nil)
-  (setq eww-retrieve-command
-        '("chromium" "--headless" "--dump-dom"))
+  (when (not (string-equal system-type "android"))
+    (setq eww-retrieve-command
+          '("chromium" "--headless" "--dump-dom")))
   (add-hook 'eww-after-render-hook #'+other/eww-rename-buffer))
 
 (defun +other/eww-rename-buffer ()
