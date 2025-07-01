@@ -9,7 +9,7 @@
         shr-use-fonts nil)
   (when (not (string-equal system-type "android"))
     (setq eww-retrieve-command
-          '("chromium" "--headless" "--dump-dom")))
+          '("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "--headless" "--dump-dom" "--disable-gpu" "--virtual-time-budget=2000")))
   (add-hook 'eww-after-render-hook #'+other/eww-rename-buffer))
 
 (defun +other/eww-rename-buffer ()
