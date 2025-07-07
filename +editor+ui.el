@@ -23,7 +23,10 @@
         doom-dracula-brighter-comments nil
         doom-dracula-comment-bg nil
         doom-dracula-colorful-headers nil)
-  (setq doom-theme 'doom-dracula)
+  (when (string-equal system-type "darwin")
+    (setq doom-theme 'doom-dracula))
+  (when (string-equal system-type "android")
+    (setq doom-theme 'dichromacy))
   (doom-themes-visual-bell-config)
   (doom-themes-org-config))
 

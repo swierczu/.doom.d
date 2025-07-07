@@ -35,8 +35,7 @@
   (set-popup-rule! "^\\*evil-owl\\*" :size 0.5)
   (evil-owl-mode))
 
-(use-package evil-goggles
-  :defer t
+(use-package! evil-goggles
   :after evil
   :config
   (evil-goggles-mode)

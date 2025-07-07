@@ -7,9 +7,12 @@
   :config
   (setq user-full-name "Bartłomiej Świercz")
   (setq user-mail-address "bartek@rndity.com")
-  (setq doom-font (font-spec :family "Iosevka Term SS04" :size 15.0 :weight 'light))
-  (setq doom-big-font (font-spec :family "Iosevka Term SS04" :size 20.0 :weight 'light))
-  (setq doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 15.0 :weight 'light))
+  (when (string-equal system-type "darwin")
+    (setq doom-font (font-spec :family "Iosevka Term SS04" :size 15.0 :weight 'light)
+          doom-big-font (font-spec :family "Iosevka Term SS04" :size 20.0 :weight 'light)
+          doom-variable-pitch-font (font-spec :family "Iosevka Term Slab" :size 15.0 :weight 'light)))
+  (when (string-equal system-type "android")
+    (doom-big-font-mode))
   (setq fancy-splash-image (concat doom-user-dir "themes/M-x_butterfly.png"))
   (add-to-list 'default-frame-alist '(undecorated . nil))
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -64,7 +67,8 @@
           ("^https?://.*youtube\\.com" . browse-url-default-browser)
           ("^https?://.*youtu\\.be" . browse-url-default-browser)
           ("." . eww-browse-url)))
-  (setq browse-url-generic-program "open"))
+  (when (string-equal system-type "darwin")
+    (setq browse-url-generic-program "open")))
 
 (defun +other/file-notify-rm-all-watches ()
   "Remove all existing file notification watches from Emacs. \

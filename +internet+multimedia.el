@@ -7,7 +7,7 @@
         shr-color-visible-distance-min 5
         shr-use-colors nil
         shr-use-fonts nil)
-  (when (not (string-equal system-type "android"))
+  (when (string-equal system-type "darwin")
     (setq eww-retrieve-command
           '("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "--headless" "--dump-dom" "--disable-gpu" "--virtual-time-budget=2000")))
   (add-hook 'eww-after-render-hook #'+other/eww-rename-buffer))
@@ -29,6 +29,7 @@
   (defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130)))
 
 (use-package! empv
+  :if (string-equal system-type "darwin")
   :defer t
   :config
   (setq empv-invidious-instance "https://inv.bp.projectsegfau.lt/api/v1")
@@ -67,6 +68,7 @@
   )
 
 (use-package! elfeed-tube
+  :if (string-equal system-type "darwin")
   :defer t
   :after elfeed
   :demand t
@@ -83,17 +85,9 @@
          ([remap save-buffer] . elfeed-tube-save)))
 
 (use-package! elfeed-tube-mpv
+  :if (string-equal system-type "darwin")
   :defer t
   :after elfeed
   :bind (:map elfeed-show-mode-map
               ("C-c C-f" . elfeed-tube-mpv-follow-mode)
               ("C-c C-w" . elfeed-tube-mpv-where)))
-
-(use-package! chatgpt-shell
-  :defer t
-  :commands
-  (chatgpt-shell dall-e-shell)
-  :init
-  (setq chatgpt-shell-openai-key
-        (lambda ()
-          (nth 0 (process-lines "pass" "show" "OpenAI/bartek@rndity.com")))))

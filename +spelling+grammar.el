@@ -1,6 +1,7 @@
 ;;; +spelling+grammar.el -*- lexical-binding: t; -*-
 
 (use-package! ispell
+  :if (string-equal system-type "darwin")
   :defer t
   :config
   (setenv "LANG" "en_US.UTF-8")
@@ -14,6 +15,7 @@
   (setq flyspell-lazy-idle-seconds 2))
 
 (use-package! languagetool
+  :if (string-equal system-type "darwin")
   :defer t
   :commands (languagetool-check
              languagetool-clear-suggestions
