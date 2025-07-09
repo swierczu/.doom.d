@@ -59,13 +59,8 @@
                                         (elfeed-show-tag 'readlater))
         :map elfeed-show-mode-map
         :desc "open feed in xwidget-webkig" "x" #'+my/elfeed-show-xwidget)
-  ;; temporal fix
-  ;; https://github.com/skeeto/elfeed/issues/466#issuecomment-1275327427
-  (define-advice elfeed-search--header (:around (oldfun &rest args))
-    (if elfeed-db
-        (apply oldfun args)
-      "No database loaded yet"))
-  )
+  (when (featurep :system 'macos)
+    (setq elfeed-curl-program-name "/usr/local/opt/curl/bin/curl")))
 
 (use-package! elfeed-tube
   :if (string-equal system-type "darwin")

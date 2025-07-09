@@ -59,7 +59,4 @@
 ;;   :recipe (:host github :repo ""))
 
 ;; Unpined packages:
-;; (unpin! (:tools docker)
-;;         ;;(:lang org)
-;;         ;;dirvish
-;;         )
+(unpin! (:app rss))

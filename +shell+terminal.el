@@ -2,14 +2,12 @@
 
 (use-package! eshell
   :defer t
-  :hook (eshell-directory-change . (lambda ()
-                                     (company-mode (if (file-remote-p default-directory) -1 +1))))
   :custom
   (eshell-visual-commands nil)
   :config
   (map! :mode eshell-mode
         :i "C-r" #'consult-history
-        (:when IS-MAC
+        (:when (featurep :system 'macos)
           :i "M-RET" #'detached-eshell-send-input)))
 
 (use-package! eat
