@@ -374,6 +374,8 @@ ${body}\n \
 (use-package! dslide
   :defer t
   :commands dslide-deck-start
+  :custom
+  (dslide-breadcrumb-separator " ➡️ ")
   :config
   (map! (:map dslide-mode-map
          :m "l" #'dslide-deck-forward
