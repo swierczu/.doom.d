@@ -36,9 +36,16 @@
           ("project"  . (:foreground "#ff79c6"))
           ("meeting"  . (:foreground "#ff79c6"))))
   (map! :after org
-        :map evil-org-mode-map
-        :n "gj" #'evil-next-visual-line
-        :n "gk" #'evil-previous-visual-line))
+        (:map evil-org-mode-map
+         :n "gj" #'evil-next-visual-line
+         :n "gk" #'evil-previous-visual-line)
+        (:localleader
+         :map org-mode-map
+         :desc "start dslide" "D" #'dslide-deck-start
+         :desc "quit dslide" "Q" (lambda()
+                                   (interactive)
+                                   (dslide-deck-stop)
+                                   (dslide-mode -1)))))
 
 ;; org-protocol:
 (defun transform-square-brackets-to-round-ones(string-to-transform)
@@ -363,3 +370,15 @@ ${body}\n \
 (use-package! hurl-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.hurl\\'" . hurl-mode)))
+
+(use-package! dslide
+  :defer t
+  :commands dslide-deck-start
+  :config
+  (map! (:map dslide-mode-map
+         :m "l" #'dslide-deck-forward
+         :m "h" #'dslide-deck-backward
+         :g "<right>" nil
+         :g "<left>" nil
+         :g "<up>" nil
+         :g "<down>" nil)))
