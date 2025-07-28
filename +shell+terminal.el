@@ -56,7 +56,22 @@
   (set-popup-rule! "^\\*detached-" :size 0.5)
   (set-popup-rule! "^\\*Detached" :size 0.3))
 
+(use-package! gptel
+  :if (string-equal system-type "darwin")
+  :config
+  (setq gptel-track-media 't)
+  (setq gptel-default-mode 'org-mode)
+  (gptel-make-ollama "Ollama-deepseek"
+    :host "localhost:11434"
+    :stream t
+    :models '(deepseek-r1:latest))
+  (gptel-make-ollama "Ollama-mistral"
+    :host "localhost:11434"
+    :stream t
+    :models '(mistral:latest)))
+
+;; Load personal gptel configuration:
 (when (string-equal system-type "darwin")
-  (let ((file-path (expand-file-name "priv/gptel-key.el" user-emacs-directory)))
+  (let ((file-path (expand-file-name "priv/gptel-key.el" doom-user-dir)))
     (when (file-exists-p file-path)
       (load file-path))))

@@ -1,5 +1,6 @@
 ;;; +lang+sql.el -*- lexical-binding: t; -*-
 
-(let ((file-path (expand-file-name "priv/sql-connection.el" user-emacs-directory)))
+;; Load personal sql connections list:
+(let ((file-path (expand-file-name "priv/sql-connection.el" doom-user-dir)))
   (when (file-exists-p file-path)
     (load file-path)))
