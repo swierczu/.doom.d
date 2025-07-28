@@ -3,10 +3,6 @@
 (use-package! mu4e
   :defer t
   :config
-  ;; fix for mu4e 1.10.0 and evil-collection
-  ;; https://github.com/emacs-evil/evil-collection/issues/695
-  (remove-hook 'mu4e-main-mode-hook 'evil-collection-mu4e-update-main-view)
-
   (setq mail-user-agent 'mu4e-user-agent
         mu4e-mu-binary (executable-find "mu")
         mu4e-root-maildir "~/.maildir"
@@ -27,11 +23,9 @@
         mu4e-update-interval (* 5 60)
         mu4e-attachment-dir "~/Downloads"
         mu4e-change-filenames-when-moving t
-        mu4e-sent-messages-behavior 'delete
-        ;;mu4e-sent-messages-behavior 'sent
+        ;; mu4e-sent-messages-behavior 'delete
+        mu4e-sent-messages-behavior 'sent
         message-kill-buffer-on-exit t
-
-        mu4e-personal-addresses '("bartek@rndity.com")
 
         mu4e-use-fancy-chars t
         mu4e-headers-visible-lines 10
@@ -57,60 +51,10 @@
           (:subject . 50)
           (:maildir)))
 
-  (set-email-account! "bartek@rndity.com"
-                      '((user-mail-address . "bartek@rndity.com")
-                        (user-full-name . "Bartłomiej Świercz")
-                        (mu4e-drafts-folder . "/bartek@rndity.com/[Gmail]/Drafts")
-                        (mu4e-sent-folder . "/bartek@rndity.com/[Gmail]/Sent Mail")
-                        (mu4e-refile-folder . "/bartek@rndity.com/[Gmail]/All Mail")
-                        (mu4e-trash-folder . "/bartek@rndity.com/[Gmail]/Bin")
-                        (smtpmail-smtp-server . "smtp.gmail.com")
-                        (smtpmail-smtp-user . "bartek@rndity.com")
-                        (org-msg-greeting-fmt . "
-
-#+begin_signature
---
-Bartłomiej Świercz
-/Chief Executive Officer/ of *[[https://rndity.com][rnd.guru]]*
-
-/tel: +48 603 717 633/
-#+end_signature"))
-                      t)
-
-  (setq +mu4e-gmail-accounts '(("bartek@rndity.com"     "/bartek@rndity.com")))
-
   (setq mu4e-context-policy 'ask-if-none
         mu4e-compose-context-policy 'always-ask)
 
-  (setq mu4e-bookmarks
-        '(( :name  "Unread messages"
-            :query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-            :key ?u)
-          ( :name "Today's INBOX"
-                  :query "date:today..now and maildir:/bartek@rndity.com/INBOX"
-                  :key ?s)
-          ( :name "Today's ALL messages"
-                  :query "date:today..now and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-                  :key ?t)
-          ( :name "Last 7 days INBOX"
-                  :query "date:7d..now and maildir:/bartek@rndity.com/INBOX"
-                  :key ?!)
-          ( :name "Last 7 days ALL messages"
-                  :query "date:7d..now and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-                  :key ?w)
-          ( :name "Messages with images"
-                  :query "mime:image/* and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-                  :key ?i)
-          ( :name "Messages with PDFs"
-                  :query "mime:application/pdf and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam"
-                  :key ?p)
-          ( :name "Meeting invitations"
-                  :query "file:/\.ics$/"
-                  :key ?m)))
-
   (setq mu4e-maildir-shortcuts nil)
-
-  (setq mu4e-alert-interesting-mail-query "flag:unread AND NOT flag:trashed and not maildir:/bartek@rndity.com/[Gmail]/Bin and not maildir:/bartek@rndity.com/[Gmail]/Spam")
 
   (set-face-attribute 'gnus-header-subject nil
                       :height 1.4
@@ -126,15 +70,24 @@ Bartłomiej Świercz
                  (side . right)
                  (window-width . 0.5)))
 
-
-  (advice-add '+mu4e-view-select-mime-part-action :override
-              #'fix/+mu4e-view-select-mime-part-action)
-
-
   (map! :map mu4e-view-mode-map
         :n "q" #'mu4e-view-quit
         :map mu4e-headers-mode-map
         :n "T" #'mu4e-view-mark-thread))
+
+;; Load personal mu4e configuration:
+(let ((file-path (expand-file-name "priv/mu4e-personal.el" doom-user-dir)))
+  (when (file-exists-p file-path)
+    (load file-path)))
+
+(use-package! mu4e-alert
+  :after mu4e
+  :defer t
+  :config
+  (setq mu4e-alert-set-default-style 'notifier)
+  (setq mu4e-alert-email-notification-types '(count))
+  (setq mu4e-alert-interesting-mail-query "flag:unread and date:3d..now AND NOT flag:trashed")
+  (mu4e-alert-enable-notifications))
 
 (use-package! mu4e-thread
   :after mu4e
@@ -146,16 +99,6 @@ Bartłomiej Świercz
         :n "zo" #'mu4e-thread-unfold
         :n "zm" #'mu4e-thread-fold-all
         :n "zr" #'mu4e-thread-unfold-all))
-
-(defun fix/+mu4e-view-select-mime-part-action ()
-  "Select a MIME part, and perform an action on it."
-  (interactive)
-  (let ((labeledparts (+mu4e-part-selectors (mu4e--view-gather-mime-parts))))
-    (if labeledparts
-        (mu4e-view-mime-part-action
-         (cadr (assoc (completing-read "Select part: " (mapcar #'car labeledparts))
-                      labeledparts)))
-      (user-error (mu4e-format "No parts found")))))
 
 (use-package! org-msg
   :defer t

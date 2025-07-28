@@ -6,6 +6,7 @@
 (package! dired-narrow)
 (package! dired-subtree)
 (package! dired-filter)
+(package! mu4e-alert)
 (package! google-translate)
 (package! kubernetes)
 (package! kubernetes-evil)
