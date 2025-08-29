@@ -66,7 +66,7 @@
                       :foreground "#ff79c6")
 
   (add-to-list 'display-buffer-alist
-               '("\\*mu4e-article\\*" display-buffer-in-side-window
+               `("\\*mu4e-article\\*" display-buffer-in-side-window
                  (side . right)
                  (window-width . 0.5)))
 
