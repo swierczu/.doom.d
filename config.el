@@ -67,6 +67,8 @@
           ("^https?://.*youtube\\.com" . browse-url-default-browser)
           ("^https?://.*youtu\\.be" . browse-url-default-browser)
           ("^https?://github\\.com" . browse-url-default-browser)
+          ("^https?://reddit\\.com" . browse-url-default-browser)
+          ("^https?://teams\\.microsoft\\.com" . browse-url-default-browser)
           ("." . eww-browse-url)))
   (when (string-equal system-type "darwin")
     (setq browse-url-generic-program "open")))
