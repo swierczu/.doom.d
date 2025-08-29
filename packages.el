@@ -61,3 +61,4 @@
 
 ;; Unpined packages:
 (unpin! (:app rss))
+(unpin! lsp-dart)

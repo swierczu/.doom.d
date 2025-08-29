@@ -117,6 +117,7 @@
 ;; Programming languages and modes
 ;; -------------------------------
 
+(load! "+lang+dart.el")
 (load! "+lang+web.el")
 (load! "+lang+json.el")
 (load! "+lang+sql.el")
