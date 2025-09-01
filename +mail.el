@@ -71,6 +71,8 @@
                  (side . right)
                  (window-width . 0.5)))
 
+  (add-hook 'mu4e-headers-mode-hook #'doom-mark-buffer-as-real-h)
+
   (map! :map mu4e-view-mode-map
         :n "q" #'mu4e-view-quit
         :map mu4e-headers-mode-map
