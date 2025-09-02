@@ -30,7 +30,7 @@
         mu4e-use-fancy-chars t
         mu4e-headers-visible-lines 10
         mu4e-headers-visible-columns 100
-        mu4e-split-view 'vertical
+        mu4e-split-view 'single-window
         mu4e-search-skip-duplicates nil
         message-cite-reply-position 'above
         shr-color-visible-luminance-min 80
