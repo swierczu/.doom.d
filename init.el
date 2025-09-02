@@ -96,7 +96,7 @@
        biblio
        (debugger +lsp)         ; FIXME stepping through code, to help you add bugs
        direnv
-       (docker +lsp)
+       (docker +lsp +tree-sitter)
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
@@ -130,7 +130,7 @@
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
-       (dart +lsp +flutter)   ; paint ui and not much else
+       (dart +lsp +flutter +tree-sitter)   ; paint ui and not much else
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
@@ -145,7 +145,7 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        (json +lsp +tree-sitter)              ; At least it ain't XML
-       (java +meghanada) ; the poster child for carpal tunnel syndrome
+       (java +meghanada +tree-sitter) ; the poster child for carpal tunnel syndrome
        (javascript +lsp +tree-sitter)
        ;;(julia +lsp)            ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
