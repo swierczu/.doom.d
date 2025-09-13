@@ -47,6 +47,13 @@
                                    (dslide-deck-stop)
                                    (dslide-mode -1)))))
 
+;; org-agenda:
+(defun +sw/org-agenda-files-update ()
+  "Update org-agenda-files list."
+  (interactive)
+  (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
+  (message "Agenda read %d files." (length org-agenda-files)))
+
 ;; org-protocol:
 (defun transform-square-brackets-to-round-ones(string-to-transform)
   "Transforms [ into ( and ] into ), other chars left unchanged."
