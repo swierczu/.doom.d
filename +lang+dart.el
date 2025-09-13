@@ -17,7 +17,7 @@
 (defun +sw/android-emulators()
   (let* ((emulators (shell-command-to-string
                      (format "%s -list-avds" +sw/android-emulator-path)))
-         (emulators-list (split-string emulators "\n")))
+         (emulators-list (delete "" (split-string emulators "\n"))))
     emulators-list))
 
 (defun +sw/run-android-emulator(emulator-id)
