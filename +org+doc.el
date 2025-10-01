@@ -17,6 +17,7 @@
   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕"))
   (add-to-list 'org-modules 'org-habit t)
   (setq org-habit-show-all-today t)
+  (setq org-duration-format 'h:mm)
   (set-face-attribute 'org-document-title nil :height 1.4 :weight 'extra-bold)
   (set-face-attribute 'org-level-1 nil :extend nil :height 1.3)
   (set-face-attribute 'org-level-2 nil :extend nil :height 1.2)
