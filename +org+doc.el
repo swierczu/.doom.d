@@ -34,8 +34,10 @@
   (setq org-tag-faces
         '(("noexport" . (:foreground "#b6b6b2" :height 1.0))
           ("ATTACH" . (:foreground "#b6b6b2" :height 1.0))
-          ("project"  . (:foreground "#ff79c6"))
-          ("meeting"  . (:foreground "#ff79c6"))))
+          ("project"  . (:foreground "#ff79c6" :background "#ffffff"))
+          ("kropka"  . (:foreground "#0000ff" :background "#ffffff"))
+          ("improver"  . (:foreground "#0000ff" :background "#ffffff"))
+          ("meeting"  . (:foreground "#00ff00" :background "#ffffff"))))
   (map! :after org
         (:map evil-org-mode-map
          :n "gj" #'evil-next-visual-line
