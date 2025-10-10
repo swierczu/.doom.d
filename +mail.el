@@ -44,12 +44,11 @@
         mu4e-index-cleanup t)
 
   (setq mu4e-headers-fields
-        '((:account-stripe . 1)
-          (:human-date . 12)
+        '((:human-date . 9)
           (:flags . 6)
-          (:from-or-to . 25)
-          (:subject . 50)
-          (:maildir)))
+          (:from-or-to . 20)
+          (:subject . 40)
+          (:labels . nil)))
 
   (setq mu4e-context-policy 'ask-if-none
         mu4e-compose-context-policy 'always-ask)
