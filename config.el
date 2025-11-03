@@ -40,6 +40,7 @@
              (unless (string= "-" project-name)
                (format " [%s]" project-name))))))
   (global-visual-line-mode t)
+  (auto-dim-other-buffers-mode t)
   (pixel-scroll-precision-mode t)
   (setq pixel-scroll-precision-interpolate-page t)
   (global-subword-mode 1)

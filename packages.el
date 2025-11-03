@@ -56,6 +56,7 @@
 (package! verb)
 (package! dslide)
 (package! powerthesaurus)
+(package! auto-dim-other-buffers)
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 
