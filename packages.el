@@ -55,7 +55,8 @@
 (package! verb)
 (package! dslide)
 (package! powerthesaurus)
-(package! auto-dim-other-buffers)
+(package! lsp-proxy :recipe (:host github :repo "jadestrong/lsp-proxy"
+                             :files ("*.el")))
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 
