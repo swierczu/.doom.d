@@ -12,7 +12,8 @@
 (use-package! embark
   :config
   (map! :map embark-url-map
-        :desc "Open with system browser" "D" #'browse-url-default-browser))
+        :desc "Open with system browser" "D" #'browse-url-default-browser
+        :desc "Open with xWidgets" "X" #'xwidget-webkit-browse-url))
 
 (use-package! doom-themes
   :config
