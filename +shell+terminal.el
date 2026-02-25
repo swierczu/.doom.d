@@ -19,6 +19,7 @@
 (use-package! vterm
   :defer t
   :config
+  (setq-default vterm-shell "/usr/local/bin/fish")
   (add-to-list 'vterm-tramp-shells '("sshx" "/bin/sh"))
   (add-to-list 'vterm-tramp-shells '("ssh" "/bin/sh")))
 

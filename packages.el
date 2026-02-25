@@ -39,9 +39,8 @@
   :recipe (:host github :repo "jaszhe/hurl-mode" :files ("*.el")))
 (when (string-equal system-type "darwin")
   (package! detached)
-  (package! elfeed-tube)
   (package! elfeed-tube-mpv)
-  (package! empv)
+  (package! mpv)
   (package! gptel :recipe (:nonrecursive t))
   (package!  treesitter-context
     :recipe (:host github :repo "zbelial/treesitter-context.el"))

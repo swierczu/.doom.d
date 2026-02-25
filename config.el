@@ -5,6 +5,9 @@
 ;; -------------------------------
 (use-package! emacs
   :config
+  ;;(setq shell-file-name (executable-find "bash"))
+  (setq shell-file-name "/usr/local/bin/bash")
+  (setq-default explicit-shell-file-name "/usr/local/bin/fish")
   (setq user-full-name "Bartłomiej Świercz")
   (setq user-mail-address "bartek@rndity.com")
   (when (string-equal system-type "darwin")

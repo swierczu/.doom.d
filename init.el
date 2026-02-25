@@ -166,7 +166,7 @@
         +journal
         +export
         +present
-        +roam2
+        +roam
         +pretty
         +noter
         +dragndrop
@@ -202,7 +202,7 @@
        calendar
        everywhere        ; *leave* Emacs!? You must be joking
        irc               ; how neckbeards socialize
-       (rss +org)        ; emacs as an RSS reader
+       (rss +org +youtube)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config

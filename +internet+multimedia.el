@@ -28,16 +28,6 @@
   :config
   (defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130)))
 
-(use-package! empv
-  :if (string-equal system-type "darwin")
-  :defer t
-  :config
-  (setq empv-invidious-instance "https://inv.bp.projectsegfau.lt/api/v1")
-  (setq empv-mpv-args nil)
-  (add-to-list 'empv-mpv-args "--save-position-on-quit")
-  (add-to-list 'empv-mpv-args "--ytdl-format=best")
-  (add-to-list 'empv-mpv-args "--vid=auto"))
-
 (defun +my/elfeed-show-xwidget ()
   (interactive)
   (let ((link (elfeed-entry-link elfeed-show-entry)))
@@ -61,28 +51,3 @@
         :desc "open feed in xwidget-webkig" "x" #'+my/elfeed-show-xwidget)
   (when (featurep :system 'macos)
     (setq elfeed-curl-program-name "/usr/local/opt/curl/bin/curl")))
-
-(use-package! elfeed-tube
-  :if (string-equal system-type "darwin")
-  :defer t
-  :after elfeed
-  :demand t
-  :config
-  ;; (setq elfeed-tube-auto-save-p nil) ; default value
-  ;; (setq elfeed-tube-auto-fetch-p t)  ; default value
-  (elfeed-tube-setup)
-
-  :bind (:map elfeed-show-mode-map
-         ("F" . elfeed-tube-fetch)
-         ([remap save-buffer] . elfeed-tube-save)
-         :map elfeed-search-mode-map
-         ("F" . elfeed-tube-fetch)
-         ([remap save-buffer] . elfeed-tube-save)))
-
-(use-package! elfeed-tube-mpv
-  :if (string-equal system-type "darwin")
-  :defer t
-  :after elfeed
-  :bind (:map elfeed-show-mode-map
-              ("C-c C-f" . elfeed-tube-mpv-follow-mode)
-              ("C-c C-w" . elfeed-tube-mpv-where)))
