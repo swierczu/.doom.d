@@ -1,6 +1,7 @@
 ;;; +tools.el -*- lexical-binding: t; -*-
 
 (use-package magit
-  :custom
+  :config
+  (setq magit-process-connection-type nil)
   (when (string-equal system-type "darwin")
-    (magit-git-executable "/usr/local/bin/git")))
+    (setq magit-git-executable "/usr/local/bin/git")))
