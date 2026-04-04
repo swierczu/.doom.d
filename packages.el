@@ -2,7 +2,7 @@
 ;;; $DOOMDIR/packages.el
 
 ;; (package! vue-mode)
-(package! pocket-reader)
+;; (package! pocket-reader)
 (package! dired-narrow)
 (package! dired-subtree)
 (package! dired-filter)
@@ -55,11 +55,9 @@
 (package! verb)
 (package! dslide)
 (package! powerthesaurus)
-(package! lsp-proxy :recipe (:host github :repo "jadestrong/lsp-proxy"
-                             :files ("*.el")))
+(package! dwim-shell-command
+  :recipe (:host github :repo "xenodium/dwim-shell-command"))
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 
 ;; Unpined packages:
-(unpin! (:app rss))
-(unpin! lsp-dart)

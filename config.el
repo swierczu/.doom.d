@@ -123,15 +123,6 @@
 ;; Programming languages and modes
 ;; -------------------------------
 
-(use-package! lsp-proxy
-  :config
-  (set-lookup-handlers! 'lsp-proxy-mode
-    :definition '(lsp-proxy-find-definition :async t)
-    :references '(lsp-proxy-find-references :async t)
-    :implementations '(lsp-proxy-find-implementations :async t)
-    :type-definition '(lsp-proxy-find-type-definition :async t)
-    :documentation '(lsp-proxy-describe-thing-at-point :async t)))
-
 (load! "+lang+dart.el")
 (load! "+lang+web.el")
 (load! "+lang+json.el")
