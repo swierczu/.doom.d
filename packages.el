@@ -47,7 +47,10 @@
   (package! pg
     :recipe (:host github :repo "emarsden/pg-el"))
   (package! pgmacs
-    :recipe (:host github :repo "emarsden/pgmacs")))
+    :recipe (:host github :repo "emarsden/pgmacs"))
+  (package! tramp-rpc
+    :recipe (:host github :repo "ArthurHeymans/emacs-tramp-rpc"))
+  (package! msgpack))
 
 ;; For testing and checking:
 (package! swagg

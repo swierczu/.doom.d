@@ -24,6 +24,9 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
   ;; source: https://github.com/emacs-lsp/lsp-mode/issues/2514#issuecomment-759452037
   (advice-add 'start-file-process-shell-command :around #'start-file-process-shell-command@around))
 
+(use-package! msgpack)
+(use-package! tramp-rpc)
+
 (use-package! dired
   :defer t
   :hook (dired-mode . dired-hide-details-mode)
