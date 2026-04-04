@@ -9,7 +9,7 @@
         shr-use-fonts nil)
   (when (string-equal system-type "darwin")
     (setq eww-retrieve-command
-          '("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "--headless" "--dump-dom" "--disable-gpu" "--virtual-time-budget=2000")))
+          '("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "--headless" "--dump-dom" "--disable-gpu" "--disable-dev-shm-usage" "--no-first-run" "--disable-extensions" "--disable-default-apps" "--virtual-time-budget=2000")))
   (add-hook 'eww-after-render-hook #'+other/eww-rename-buffer))
 
 (defun +other/eww-rename-buffer ()
