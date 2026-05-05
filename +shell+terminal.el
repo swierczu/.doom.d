@@ -32,13 +32,84 @@
   (add-to-list
    'proced-format-alist
    '(custom user pid tree pcpu pmem vsize rss start time state (args comm)))
-  (setq proced-auto-update-interval 2
-        proced-auto-update-flag nil
+  (setq proced-auto-update-interval 1
+        proced-auto-update-flag 'visible
         proced-show-remote-processes t
+        proced-descent t
         proced-goal-attribute nil
         proced-tree-flag t
         proced-enable-color-flag t
-        proced-format 'custom))
+        proced-format 'medium
+        proced-filter 'user)
+
+  ;; source: https://rahuljuliato.com/posts/proced-macos
+  (when (eq system-type 'darwin)
+    (defvar emacs-solo--proced-ps-cache (make-hash-table))
+    (defvar emacs-solo--proced-ps-timer nil)
+
+    (defun emacs-solo--proced-ps-do-refresh ()
+      (make-process
+       :name "proced-ps-refresh"
+       :buffer (generate-new-buffer " *proced-ps-temp*")
+       :command '("env" "LC_ALL=C" "ps" "-axo"
+		  "pid=,%cpu=,%mem=")
+       :noquery t
+       :sentinel
+       (lambda (proc _event)
+	 (when (eq (process-status proc) 'exit)
+	   (let ((new-cache (make-hash-table)))
+	     (with-current-buffer (process-buffer proc)
+	       (goto-char (point-min))
+	       (while (not (eobp))
+		 (when (looking-at
+			(rx (* blank)
+			    (group (+ digit))
+			    (+ blank)
+			    (group (+ (any digit ?.)))
+			    (+ blank)
+			    (group (+ (any digit ?.)))))
+		   (puthash
+		    (string-to-number (match-string 1))
+		    (cons (string-to-number
+			   (match-string 2))
+			  (string-to-number
+			   (match-string 3)))
+		    new-cache))
+		 (forward-line 1)))
+	     (kill-buffer (process-buffer proc))
+	     (setq emacs-solo--proced-ps-cache new-cache))))))
+
+    (defun emacs-solo--proced-pcpu (pid)
+      (car (gethash pid emacs-solo--proced-ps-cache)))
+
+    (defun emacs-solo--proced-pmem (pid)
+      (cdr (gethash pid emacs-solo--proced-ps-cache)))
+
+    (add-hook 'proced-mode-hook
+	      (lambda ()
+		(setq emacs-solo--proced-ps-timer
+		      (run-with-timer 0 2
+				      #'emacs-solo--proced-ps-do-refresh))))
+
+    (add-hook 'kill-buffer-hook
+	      (lambda ()
+		(when (and (derived-mode-p 'proced-mode)
+			   (timerp emacs-solo--proced-ps-timer))
+		  (cancel-timer emacs-solo--proced-ps-timer)
+		  (setq emacs-solo--proced-ps-timer nil))))
+
+    (setq proced-custom-attributes
+	  (list
+	   (lambda (attrs)
+	     (when-let*
+		 ((pid (cdr (assq 'pid attrs)))
+		  (v (emacs-solo--proced-pcpu pid)))
+	       (cons 'pcpu v)))
+	   (lambda (attrs)
+	     (when-let*
+		 ((pid (cdr (assq 'pid attrs)))
+		  (v (emacs-solo--proced-pmem pid)))
+	       (cons 'pmem v)))))))
 
 (use-package! detached
   :if (string-equal system-type "darwin")
