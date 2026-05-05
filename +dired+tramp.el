@@ -9,6 +9,18 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
   (let ((command (mapconcat 'identity args " ")))
     (funcall start-file-process-shell-command name buffer command)))
 
+;; source: https://mbork.pl/2026-04-13_Binding_TAB_in_Dired_to_something_useful
+(defun dired-cycle-dired-windows ()
+  "Switch to the next Dired window in the selected frame."
+  (interactive)
+  (select-window
+   (cadr (seq-filter
+          (lambda (window)
+            (eq (buffer-local-value
+                 'major-mode (window-buffer window))
+                'dired-mode))
+          (window-list)))))
+
 (use-package! tramp
   :defer t
   :config
