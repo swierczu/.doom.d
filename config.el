@@ -71,6 +71,7 @@
           ("^https?://.*youtu\\.be" . browse-url-default-browser)
           ("^https?://github\\.com" . browse-url-default-browser)
           ("^https?://gitlab\\.com" . browse-url-default-browser)
+          ("^https?://codeberg\\.org" . browse-url-default-browser)
           ("^https?://reddit\\.com" . browse-url-default-browser)
           ("^https?://figma\\.com" . browse-url-default-browser)
           ("^https?://.*\\.google\\.com" . browse-url-default-browser)

@@ -28,16 +28,24 @@
   :config
   (defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130)))
 
-(defun +my/elfeed-show-xwidget ()
-  (interactive)
-  (let ((link (elfeed-entry-link elfeed-show-entry)))
-    (when link
-      (message "Sent to xwidget-webkit: %s" link)
-      (xwidget-webkit-browse-url link))))
-
 (use-package! elfeed
   :defer t
   :config
+
+  (defun +my/elfeed-show-xwidget ()
+    (interactive)
+    (let ((link (elfeed-entry-link elfeed-show-entry)))
+      (when link
+        (message "Sent to xwidget-webkit: %s" link)
+        (xwidget-webkit-browse-url link))))
+
+  (defun +my/elfeed-show-browser()
+    (interactive)
+    (let ((link (elfeed-entry-link elfeed-show-entry)))
+      (when link
+        (message "Sent to default system browser: %s" link)
+        (browse-url-default-browser link))))
+
   (map! :localleader
         :map elfeed-search-mode-map
         :desc "set/unset to read later" "l" (lambda ()
@@ -48,6 +56,8 @@
                                         (interactive)
                                         (elfeed-show-tag 'readlater))
         :map elfeed-show-mode-map
-        :desc "open feed in xwidget-webkig" "x" #'+my/elfeed-show-xwidget)
+        :desc "open feed in xwidget-webkig" "X" #'+my/elfeed-show-xwidget
+        :map elfeed-show-mode-map
+        :desc "open feed in browser" "x" #'+my/elfeed-show-browser)
   (when (featurep :system 'macos)
     (setq elfeed-curl-program-name "/usr/local/opt/curl/bin/curl")))
