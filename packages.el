@@ -60,6 +60,18 @@
 (package! powerthesaurus)
 (package! dwim-shell-command
   :recipe (:host github :repo "xenodium/dwim-shell-command"))
+(package! go-fill-struct
+  :recipe (:host github :repo "s-kostyaev/go-fill-struct"))
+(package! go-add-tags
+  :recipe (:host github :repo "emacsorphanage/go-add-tags"))
+(package! go-prettify-mode
+  :recipe (:host codeberg :repo "snyssfx/go-prettify-mode.el"))
+(package! go-tag)
+(package! go-template-mode)
+(package! rainbow-delimiters)
+(package! nov)
+(package! nov-xwidget
+  :recipe (:host github :repo "chenyanming/nov-xwidget"))
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 

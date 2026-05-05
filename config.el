@@ -123,6 +123,12 @@
 ;; Programming languages and modes
 ;; -------------------------------
 
+(use-package! rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+(load! "+lang+go.el")
 (load! "+lang+dart.el")
 (load! "+lang+web.el")
 (load! "+lang+json.el")

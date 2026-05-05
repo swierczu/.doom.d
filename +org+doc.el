@@ -124,6 +124,15 @@
   (add-hook! 'pdf-view-mode-hook
     (pdf-view-midnight-minor-mode t)))
 
+(use-package! nov
+  ;; :load-path "../straight/repos/nov.el"
+  :ensure t
+  :mode (("\\.epub\\'" . nov-mode)))
+
+(use-package! nov-xwidget
+  :defer t
+  :after (nov))
+
 (use-package! org-roam
   :defer t
   :after org
