@@ -7,6 +7,7 @@
   :config
   (map! :mode eshell-mode
         :i "C-r" #'consult-history
+        :i "RET" #'eshell-send-input
         (:when (featurep :system 'macos)
           :i "M-RET" #'detached-eshell-send-input)))
 
