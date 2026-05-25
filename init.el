@@ -12,6 +12,17 @@
     (push termuxpath exec-path)
     (push "~/.config/emacs/bin" exec-path)))
 
+;; https://www.jamescherti.com/compiling-emacs/
+;; check arch: gcc -march=native -Q --help=target | grep march
+(when (string-equal system-type "darwin")
+  (defvar my-cpu-architecture "skylake")
+  (setq native-comp-compiler-options '("-O2"
+                                       "-g0"
+                                       "-fomit-frame-pointer"
+                                       "-fno-finite-math-only"))
+  (setq native-comp-driver-options `(,(format "-mtune=%s" my-cpu-architecture)
+                                     ,(format "-march=%s" my-cpu-architecture))))
+
 (doom! :input
        ;;chinese
        ;;japanese
