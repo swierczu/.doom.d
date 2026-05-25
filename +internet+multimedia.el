@@ -21,6 +21,14 @@
           (rename-buffer (concat "eww " title ) t)
         (rename-buffer "eww" t)))))
 
+(use-package! shrface
+  :hook
+  (eww-after-render . shrface-mode)
+  (nov-mode . shrface-mode)
+  (elfeed-show-mode . shrface-mode)
+  :config
+  (setq shrface-href-versatile t))
+
 (use-package! google-translate
   :defer t
   :custom

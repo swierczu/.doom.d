@@ -72,6 +72,7 @@
 (package! nov)
 (package! nov-xwidget
   :recipe (:host github :repo "chenyanming/nov-xwidget"))
+(package! shrface)
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 
