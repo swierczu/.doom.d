@@ -37,7 +37,9 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
   (advice-add 'start-file-process-shell-command :around #'start-file-process-shell-command@around))
 
 (use-package! msgpack)
-(use-package! tramp-rpc)
+(use-package! tramp-rpc
+  :config
+  (setq tramp-rpc-deploy-git-build-policy 'release))
 
 (use-package! dired
   :defer t
