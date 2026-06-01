@@ -37,10 +37,17 @@
 (package! hcl-mode)
 (package! hurl-mode
   :recipe (:host github :repo "jaszhe/hurl-mode" :files ("*.el")))
+(package! rainbow-delimiters)
+(package! nov)
+(package! shrface)
 (when (string-equal system-type "darwin")
   (package! detached)
   (package! elfeed-tube-mpv)
+  (package! nov-xwidget
+    :recipe (:host github :repo "chenyanming/nov-xwidget"))
   (package! mpv)
+  (package! dwim-shell-command
+    :recipe (:host github :repo "xenodium/dwim-shell-command"))
   (package! gptel :recipe (:nonrecursive t))
   (package!  treesitter-context
     :recipe (:host github :repo "zbelial/treesitter-context.el"))
@@ -58,8 +65,6 @@
 (package! verb)
 (package! dslide)
 (package! powerthesaurus)
-(package! dwim-shell-command
-  :recipe (:host github :repo "xenodium/dwim-shell-command"))
 (package! go-fill-struct
   :recipe (:host github :repo "s-kostyaev/go-fill-struct"))
 (package! go-add-tags
@@ -68,11 +73,6 @@
   :recipe (:host codeberg :repo "snyssfx/go-prettify-mode.el"))
 (package! go-tag)
 (package! go-template-mode)
-(package! rainbow-delimiters)
-(package! nov)
-(package! nov-xwidget
-  :recipe (:host github :repo "chenyanming/nov-xwidget"))
-(package! shrface)
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 
