@@ -77,3 +77,4 @@
 ;;   :recipe (:host github :repo ""))
 
 ;; Unpined packages:
+(unpin! (:app rss))

@@ -40,6 +40,7 @@
   :defer t
   :config
 
+  (setopt elfeed-search-filter "#50 +unread")
   (defun +my/elfeed-show-xwidget ()
     (interactive)
     (let ((link (elfeed-entry-link elfeed-show-entry)))
