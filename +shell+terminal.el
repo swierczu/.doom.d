@@ -148,3 +148,21 @@
   (let ((file-path (expand-file-name "priv/gptel-key.el" doom-user-dir)))
     (when (file-exists-p file-path)
       (load file-path))))
+
+(use-package! dwim-shell-command
+  :config
+  ;; from: https://taonaw.com/2026/06/03/correcting-photo-orientation-for-orgmode.html
+  (defun other/dwim-image-auto-orient ()
+    "Auto-orient images based on EXIF data using mogrify."
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Auto-orient images"
+     "mogrify -auto-orient '<<f>>'"
+     :utils "mogrify"
+     :silent-success t)))
+
+
+
+
+
+
