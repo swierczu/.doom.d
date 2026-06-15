@@ -10,16 +10,24 @@
   (when (string-equal system-type "darwin")
     (setq eww-retrieve-command
           '("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "--headless" "--dump-dom" "--disable-gpu" "--disable-dev-shm-usage" "--no-first-run" "--disable-extensions" "--disable-default-apps" "--virtual-time-budget=2000")))
-  (add-hook 'eww-after-render-hook #'+other/eww-rename-buffer))
 
-(defun +other/eww-rename-buffer ()
-  "Rename `eww-mode' buffer so sites open in new page."
-  ;; http://xahlee.info/emacs/emacs/emacs_eww_web_browser.html
-  (let ((title (plist-get eww-data :title)))
-    (when (eq major-mode 'eww-mode)
-      (if title
-          (rename-buffer (concat "eww " title ) t)
-        (rename-buffer "eww" t)))))
+  (defun +my/eww-new ()
+    (interactive)
+    (let ((url (read-from-minibuffer "Enter URL or keywords: ")))
+      (switch-to-buffer (generate-new-buffer "eww"))
+      (eww-mode)
+      (eww url)))
+  
+  (defun +other/eww-rename-buffer ()
+    "Rename `eww-mode' buffer so sites open in new page."
+    ;; http://xahlee.info/emacs/emacs/emacs_eww_web_browser.html
+    (let ((title (plist-get eww-data :title)))
+      (when (eq major-mode 'eww-mode)
+        (if title
+            (rename-buffer (concat "eww " title ) t)
+          (rename-buffer "eww" t)))))
+
+  (add-hook 'eww-after-render-hook #'+other/eww-rename-buffer))
 
 (use-package! shrface
   :hook
