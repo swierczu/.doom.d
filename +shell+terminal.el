@@ -11,6 +11,11 @@
         (:when (featurep :system 'macos)
           :i "M-RET" #'detached-eshell-send-input)))
 
+(use-package ghostel
+  :defer t
+  :config
+  (setq ghostel-module-auto-install 'download))
+
 (use-package! eat
   ;; Don't forget to run tic -x eat.ti (found on the source)
   ;; or run https://elpa.nongnu.org/nongnu-devel/doc/eat.html#Not-Recognized
@@ -18,6 +23,7 @@
   (eat-eshell-mode t))
 
 (use-package! vterm
+  :disabled t
   :defer t
   :config
   (setq-default vterm-shell "/usr/local/bin/fish")
