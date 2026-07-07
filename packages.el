@@ -48,7 +48,6 @@
   (package! mpv)
   (package! dwim-shell-command
     :recipe (:host github :repo "xenodium/dwim-shell-command"))
-  (package! gptel :recipe (:nonrecursive t))
   (package!  treesitter-context
     :recipe (:host github :repo "zbelial/treesitter-context.el"))
   (package! pg

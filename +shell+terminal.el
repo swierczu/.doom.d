@@ -134,14 +134,18 @@
   :config
   (setq gptel-track-media 't)
   (setq gptel-default-mode 'org-mode)
-  (gptel-make-ollama "Ollama-deepseek"
+  (gptel-make-ollama "remote-ollama-qwen3-coder"
+    :host "localhost:11435"
+    :stream t
+    :models '(qwen3-coder:30b))
+  (gptel-make-ollama "ollama-phi4-mini"
     :host "localhost:11434"
     :stream t
-    :models '(deepseek-r1:latest))
-  (gptel-make-ollama "Ollama-mistral"
+    :models '(phi4-mini:latest))
+  (gptel-make-ollama "ollama-qwen2.5-coder"
     :host "localhost:11434"
     :stream t
-    :models '(mistral:latest)))
+    :models '(qwen2.5-coder:7b)))
 
 ;; Load personal gptel configuration:
 (when (string-equal system-type "darwin")

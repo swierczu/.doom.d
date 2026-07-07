@@ -102,6 +102,7 @@
        (:if (featurep :system 'macos) grammar) ; tasing grammar mistake every you make
 
        :tools
+       (:if (featurep :system 'macos) llm)
        tree-sitter
        ansible
        biblio
