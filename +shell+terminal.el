@@ -163,7 +163,16 @@
      "Auto-orient images"
      "mogrify -auto-orient '<<f>>'"
      :utils "mogrify"
-     :silent-success t)))
+     :silent-success t))
+
+  (defun dwim-shell-commands-convert-to-mkv ()
+    "Convert to mkv"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Convert to mkv"
+     ;; "ffmpeg -fflags +genpts -i input.avi -c:v copy -c:a copy output.mkv"
+     "ffmpeg -i '<<f>>' -fflags +genpts -c:v copy -c:a copy '<<fne>>'.mp4" 
+     :utils "ffmpeg")))
 
 
 
