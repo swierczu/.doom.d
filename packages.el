@@ -40,6 +40,7 @@
 (package! rainbow-delimiters)
 (package! nov)
 (package! shrface)
+(package! fish-mode)
 (when (string-equal system-type "darwin")
   (package! detached)
   (package! elfeed-tube-mpv)
