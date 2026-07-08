@@ -172,19 +172,15 @@
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org
-        +attach
-        +babel
-        +capture
-        +crypt
-        +journal
-        +export
-        +present
-        +roam
-        +pretty
-        +noter
         +dragndrop
+        +crypt
         +gnuplot
-        +pandoc)
+        +journal
+        +noter
+        +pandoc
+        +present
+        +pretty
+        +roam)
        (php +lsp +tree-sitter) ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
