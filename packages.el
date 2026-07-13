@@ -73,6 +73,7 @@
   :recipe (:host codeberg :repo "snyssfx/go-prettify-mode.el"))
 (package! go-tag)
 (package! go-template-mode)
+(package! jinx)
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 

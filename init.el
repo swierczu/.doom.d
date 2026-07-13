@@ -97,9 +97,9 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       (spell            ; tasing you for misspelling misspelling
-        +flyspell
-        +hunspell)       ;+everywhere)
+       ;; (spell            ; tasing you for misspelling misspelling
+       ;;  +flyspell
+       ;;  +hunspell)       ;+everywhere)
        (:if (featurep :system 'macos) grammar) ; tasing grammar mistake every you make
 
        :tools
