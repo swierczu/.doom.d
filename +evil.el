@@ -18,10 +18,7 @@
           :g "s-0"   #'+workspace/switch-to-final
           :g "s-}"   #'+workspace/switch-right
           :g "s-{"   #'+workspace/switch-left)
-        :g "C-c s" #'window-toggle-side-windows
-        :g "C-c c" #'calendar
-        :g "C-c b" #'+nav-flash/blink-cursor
-        :g "C-c C-d" #'dirvish))
+        :g "C-c s" #'window-toggle-side-windows))
 
 (use-package! evil-owl
   :after evil

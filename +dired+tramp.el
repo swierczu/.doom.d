@@ -75,7 +75,8 @@ Similar to `start-process-shell-command', but calls `start-file-process'."
 
 (use-package! dirvish
   :config
-  (setq dirvish-hide-details t))
+  (setq dirvish-hide-details t)
+  (map! :g "C-c C-d" #'dirvish))
 
 (use-package! docker
   :if (string-equal system-type "darwin")

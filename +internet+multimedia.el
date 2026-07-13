@@ -1,5 +1,24 @@
 ;;; +internet+multimedia.el -*- lexical-binding: t; -*-
 
+(use-package! browse-url
+  :config
+  (setq browse-url-handlers
+        '(("^https?://instagram\\.com" . browse-url-default-browser)
+          ("^https?://facebook\\.com" . browse-url-default-browser)
+          ("^https?://.*youtube\\.com" . browse-url-default-browser)
+          ("^https?://.*youtu\\.be" . browse-url-default-browser)
+          ("^https?://github\\.com" . browse-url-default-browser)
+          ("^https?://gitlab\\.com" . browse-url-default-browser)
+          ("^https?://codeberg\\.org" . browse-url-default-browser)
+          ("^https?://reddit\\.com" . browse-url-default-browser)
+          ("^https?://www\\.reddit\\.com" . browse-url-default-browser)
+          ("^https?://figma\\.com" . browse-url-default-browser)
+          ("^https?://.*\\.google\\.com" . browse-url-default-browser)
+          ("^https?://teams\\.microsoft\\.com" . browse-url-default-browser)
+          ("." . eww-browse-url)))
+  (when (string-equal system-type "darwin")
+    (setq browse-url-generic-program "open")))
+
 (use-package! eww
   :defer t
   :config
@@ -44,10 +63,20 @@
   :config
   (defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130)))
 
+;; (use-package! elfeed-org
+;;   :after elfeed
+;;   :config
+;;   (setopt rmh-elfeed-org-files '("~/notes/org/elfeed.org"))
+;;   (setopt rmh-elfeed-org-auto-ignore-invalid-feeds t))
+
+;; (with-eval-after-load 'elfeed
+;;   (elfeed-org))
+
 (use-package! elfeed
   :defer t
+  :init
+  (setopt rmh-elfeed-org-files '("~/notes/org/elfeed.org"))
   :config
-
   (setopt elfeed-search-filter "#50 +unread")
   (defun +my/elfeed-show-xwidget ()
     (interactive)

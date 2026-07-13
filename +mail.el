@@ -1,5 +1,10 @@
 ;;; +mail.el -*- lexical-binding: t; -*-
 
+(use-package! emacs
+  :config
+  (setq user-full-name "Bartłomiej Świercz")
+  (setq user-mail-address "swierczu@gmail.com"))
+
 (use-package! mu4e
   :defer t
   :config

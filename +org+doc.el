@@ -6,7 +6,6 @@
   (setq my-note-directory "~/notes")
   (setq org-directory (concat my-note-directory "/org"))
   (setq org-attach-id-dir (concat my-note-directory "/.attach/"))
-  (setq org-attach-directory (concat my-note-directory "/.attach/"))
   (setq org-id-locations-file (concat my-note-directory "/.orgids"))
   :config
   (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
