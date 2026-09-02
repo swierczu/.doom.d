@@ -17,7 +17,7 @@
 (use-package! jinx
   :hook (emacs-startup . global-jinx-mode)
   :config
-  (setq jinx-languages "pl_PL en_US")
+  (setq jinx-languages "pl en_US")
   (map! (:leader :desc "Spell checker" :n "t s" #'jinx-correct)
         :m "] s" #'jinx-next
         :m "[ s" #'jinx-previous))
