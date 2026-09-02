@@ -64,7 +64,6 @@
   :recipe (:host github :repo "isamert/swagg.el"))
 (package! verb)
 (package! dslide)
-(package! powerthesaurus)
 (package! go-fill-struct
   :recipe (:host github :repo "s-kostyaev/go-fill-struct"))
 (package! go-add-tags
