@@ -18,7 +18,7 @@
   :recipe (:host github :repo "neeasade/ct.el"))
 (package! org-roam-ui)
 (package! eat
-  :recipe (:host codeberg :repo "akib/emacs-eat"
+  :recipe (:type git :host codeberg :repo "akib/emacs-eat"
            :files ("*.el" ("term" "term/*.el") "*.texi"
                    "*.ti" ("terminfo/e" "terminfo/e/*")
                    ("terminfo/65" "terminfo/65/*")
