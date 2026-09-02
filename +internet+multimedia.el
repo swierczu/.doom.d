@@ -107,3 +107,12 @@
         :desc "open feed in browser" "x" #'+my/elfeed-show-browser)
   (when (featurep :system 'macos)
     (setq elfeed-curl-program-name "/usr/local/opt/curl/bin/curl")))
+
+(use-package! timu-imessage
+  :defer t
+  :commands (timu-imessage timu-imessage-search timu-imessage-doctor)
+  :bind (("C-c i i" . timu-imessage)
+         ("C-c i s" . timu-imessage-search))
+  :config
+  (evil-make-overriding-map timu-imessage-chatlist-mode-map)
+  (evil-make-overriding-map timu-imessage-convo-mode-map))

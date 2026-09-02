@@ -74,6 +74,8 @@
 (package! go-tag)
 (package! go-template-mode)
 (package! jinx)
+(package! emacs-imessage
+  :recipe (:host gitlab :repo "aimebertrand/emacs-imessage"))
 ;; (package!
 ;;   :recipe (:host github :repo ""))
 
