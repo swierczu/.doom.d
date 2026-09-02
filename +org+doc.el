@@ -11,6 +11,8 @@
   (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
   (setq org-log-done t)
   (setq org-log-into-drawer t)
+  (setq org-return-follows-link  t)
+  (setq org-agenda-skip-deadline-if-done t)
   (setq org-treat-insert-todo-heading-as-state-change t)
   (setq org-tags-column 0)
   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕"))
